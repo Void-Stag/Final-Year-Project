@@ -1,4 +1,4 @@
-import os
+import os, secrets
 import logging
 from flask import Flask
 #from flask_sqlalchemy import SQLAlchemy
@@ -9,8 +9,7 @@ from routes import main
 
 #db = SQLAlchemy()
 migrate = Migrate()
-
-
+SECRET_KEY = os.environ.get('SECRET_KEY')
 app = Flask(__name__)
 
 
