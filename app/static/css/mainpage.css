@@ -23,6 +23,10 @@
   font-size: 30px;
 }
 
+body{
+  background-color: #d2cdcd;
+}
+
 /* Header Items */
 /* Account Settings Button */
 .AccountSettings {
