@@ -9,21 +9,19 @@
 
     <div class="login">
         <img src="{{url_for('static', filename='images/Note Armadillo.png')}}" alt="Logo">
-        <p>
-            All your notes securely in one place.<br>
-            You hold all your data, no online servers required.
-        </p>
         <div>
             <form action="">
+                <p>Please input a username and password into the required fields below.
+                    <ul>
+                    <li> Password must be between 10 and 15 characters.</li>
+                    </ul>
+
+                </p>
               <input type="text" name="Username" placeholder="Username" class="" required="required">
               <br>
               <input type="password" name="Password" placeholder="Password" required="required">
               <br>
-              <button type="submit" class="login">Login</button>
-            </form>
-            <hr>
-            <form action="{{ url_for('main.home')}}">
-                <button type=submit class="login">Create Account</button>
+              <button type="submit" class="login">Create Account</button>
             </form>
         </div>
     </div>
