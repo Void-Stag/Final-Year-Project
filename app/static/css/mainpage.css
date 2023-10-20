@@ -1,0 +1,71 @@
+/* Grid Placement*/
+.header { grid-area: header; }
+.menu { grid-area: menu; }
+.main { grid-area: main; }
+.headermenu {grid-area: headermenu;}
+.todoform {grid-area: todoform;}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'menu header header header header headermenu'
+    'menu main main main main main'
+    'todoform main main main main main';
+  gap: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 5px;
+}
+
+.grid-container > div {
+  background-color: rgba(197, 72, 72, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+/* Header Items */
+/* Account Settings Button */
+.AccountSettings {
+  align-items: center;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-flex;
+  flex: 1 1 auto;
+  font-family: Inter,sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  justify-content: right;
+  line-height: 1;
+  margin: 0;
+  outline: none;
+  padding: 1rem 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s,-webkit-box-shadow .2s;
+  white-space: nowrap;
+  border: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.AccountSettings:hover {
+  box-shadow: #9e9e9e 0 0 0 3px, transparent 0 0 0 0;
+}
+
+/* Form Items */
+input[type=text], input[type=datetime]{
+  padding: 10px;
+  width: 50%;
+  margin: 10px 0;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
+
+.addtask{
+  padding: 10px;
+  width: 50%;
+}
