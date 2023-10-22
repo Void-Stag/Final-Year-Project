@@ -11,9 +11,9 @@
   <div class="headermenu">
     <button class="AccountSettings" role="button">Account Settings</button>
   </div>
-  <div class="menu">Menu</div>
+  <div class="menu">To-Do Tasks</div>
   <div class="todoform">
-    <form action="">
+    <form action="/addtask" method="POST">
       <input type="text" name="To-Do Task Name" placeholder="To-Do Task Name" class="" required="required">
       <br>
       <input type="datetime" name="To-Do Due Date" placeholder="Due date DD/MM/YYYY" required="required">
@@ -21,7 +21,11 @@
       <button type="submit" class="addtask">Add To-Do Task</button>
     </form>
   </div>
-  <div class="main">Main</div>
+  <div class="mainmenu">
+    <button class="AccountSettings" role="button">New Note +</button>
+  </div>
+  <div class="space"></div>
+  <div class="main">Notes</div>
 
 </div>
 {% endblock %}
