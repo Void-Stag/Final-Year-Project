@@ -1,7 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from .routes import main
-from NoteA.auth.routes import auth
+from NoteA import routes, authroutes
 db = SQLAlchemy()
 
 
@@ -10,8 +9,8 @@ def create_app():
     NoteA.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///website.db'
 
     db.init_app(NoteA)
-    NoteA.register_blueprint(main)
-    NoteA.register_blueprint(auth)
+    NoteA.register_blueprint(routes.main)
+    NoteA.register_blueprint(authroutes.auth)
 
     with NoteA.app_context():
         db.create_all()
