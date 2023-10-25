@@ -1,6 +1,6 @@
-from flask import Flask
+from flask import Flask, Blueprint
 from flask_sqlalchemy import SQLAlchemy
-from NoteA import routes, authroutes
+from NoteA import routes#, authroutes
 from flask_migrate import Migrate
 
 NoteA = Flask(__name__)
@@ -9,13 +9,18 @@ NoteA.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///website.db'
 db = SQLAlchemy(NoteA)
 migrate = Migrate(NoteA, db)
 
+NoteA.register_blueprint(routes.main)
+
+#NoteA.register_blueprint(authroutes.auth)
+
+NoteA.register_blueprint(Blueprint('auth', __name__, template_folder='templates'))
 def create_app():
-    NoteA = Flask(__name__)
+   # NoteA = Flask(__name__)
     NoteA.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///website.db'
 
     db.init_app(NoteA)
-    NoteA.register_blueprint(routes.main)
-    NoteA.register_blueprint(authroutes.auth)
+
+
 
     with NoteA.app_context():
         db.create_all()

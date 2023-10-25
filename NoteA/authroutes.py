@@ -11,8 +11,8 @@ def addtask():
     date = request.form.get('duedate')
 
     if task!= '' and date !='' !=None:
-        p = Task(taskname=task, duedate=date)
-        db.session.add(p)
+        t = Task(taskname=task, duedate=date)
+        db.session.add(t)
         db.session.commit()
 
     redirect('/home')
