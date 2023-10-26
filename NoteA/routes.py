@@ -4,6 +4,7 @@ from flask import jsonify
 main = Blueprint('main', __name__, template_folder='templates')
 
 @main.route('/')
+@main.route('/login', methods=['GET','POST'])
 def login(cat=None):
     return render_template('Login/login.html', title='Login')
 
