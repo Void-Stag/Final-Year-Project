@@ -1,9 +1,9 @@
-from flask import Blueprint, render_template, request, redirect
-from run import db
+from flask import Blueprint, render_template
 from models import Task
-from flask import jsonify
 
 web = Blueprint('web', __name__, template_folder='templates')
+
+
 
 @web.route('/')
 @web.route('/login', methods=['GET','POST'])
@@ -13,7 +13,8 @@ def login(cat=None):
 
 @web.route('/home', methods=['GET','POST'])
 def home(cat=None):
-    return render_template('homepage.html', title='Home')
+    tasks = Task.query.all()
+    return render_template('homepage.html', title='Home' ,tasks=tasks)
 
 @web.route('/createaccount', methods=['GET','POST'])
 def createaccount(cat=None):

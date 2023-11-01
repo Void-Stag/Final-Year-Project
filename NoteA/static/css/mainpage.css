@@ -1,6 +1,6 @@
 /* Grid Placement*/
 .header { grid-area: header; }
-.menu { grid-area: menu; }
+.menu { grid-area: menu;}
 .main { grid-area: main; }
 .buttonmenu {grid-area: buttonmenu;}
 .headermenu {grid-area: headermenu;}
@@ -12,6 +12,17 @@
   grid-template-areas:
     'menu header header header header headermenu'
     'menu buttonmenu space space space space'
+    'menu main main main main main'
+    'menu main main main main main'
+    'menu main main main main main'
+    'menu main main main main main'
+    'menu main main main main main'
+    'menu main main main main main'
+    'menu main main main main main'
+    'menu main main main main main'
+    'menu main main main main main'
+    'menu main main main main main'
+    'menu main main main main main'
     'menu main main main main main'
     'todoform main main main main main';
   gap: 10px;
@@ -42,4 +53,11 @@ input[type=text], input[type=datetime]{
 .addtask{
   padding: 10px;
   width: 50%;
+}
+
+.task-display{
+  overflow: auto;
+}
+ol{
+  font-size: small;
 }
