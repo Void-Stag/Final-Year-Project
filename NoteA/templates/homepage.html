@@ -12,22 +12,21 @@
     <button class="addtask" role="button">Account Settings</button>
   </div>
   <div class="menu">
-    To-Do Tasks
-    <div id="task-display">
-      <table>
+      <table class="tasks">
         {% for task in tasks %}
         <tr>
           <td>
-            {{ task.id }}
-            {{ task.taskname }}<br>
-            {{ task.duedate }}</td>
+            {{ task.taskname }}
+          </td>
+          <td>
+            {{ task.duedate }}
+          </td>
           <td>
             <a href="/delete_task/{{task.id}}">Delete</a>
           </td>
         </tr>
         {% endfor %}
       </table>
-    </div>
   </div>
   <div class="todoform">
     <form action="/addtask" method="POST">
@@ -50,22 +49,6 @@
 {{super ()}}
 <script>
 
- $(function contrequest() {//Once the page has loaded, the folowing function is executed
-   $.getJSON('/showtask', get_data)//Obtains the data from the annoumcement route
-  });
-
-  //function get_data(data) {//When triggered by the above function, takes the retrieved data and inserts it on the page
-    //console.log('1') //Debugging code for testing flow
-  //  console.log('2')//Debugging code for testing flow
-//    var task = '' //Creates an empty list
-
-    //data.forEach(function (element) { //Iterates the code within for each database entry
-     // console.log('3')//Debugging code for testing flow
-    //  task += `<li>${element[0]}<br> ${element[1]}</li><hr>` // formats the data into the list HTML element
-   // });
-  //  $("#task-display").html(task);//Sends the formatted list to be displayed in the div associated by id in the HTML file
-  //}
-
   function add_data(data) {
     $("#addtask").click(function () {//when the form button is pressed, code below is executed
       console.log('addtask 1')
@@ -73,13 +56,5 @@
       console.log('addtask 2')
     });
   }
-
-  //function update_data(data) {
-   // console.log('update data 3')
-   // $.getJSON(get_data)//gets the data retrieved by the get data function
-   // console.log('update data 4')
-   // $("ol").append("<tr><td>Appended item</td></tr>");//formats the data retrieved to be posted on the website
-   // console.log('update data 5')
- // }
 </script>
 {% endblock %}
