@@ -1,10 +1,7 @@
 /* Grid Placement*/
 .header { grid-area: header; }
-.menu {
-  grid-area: menu;
-  overflow:auto;
-}
-
+.menu { grid-area: menu;
+        grid-row-end: span 3;}
 .main { grid-area: main; }
 .buttonmenu {grid-area: buttonmenu;}
 .headermenu {grid-area: headermenu;}
@@ -16,16 +13,6 @@
   grid-template-areas:
     'menu header header header header headermenu'
     'menu buttonmenu space space space space'
-    'menu main main main main main'
-    'menu main main main main main'
-    'menu main main main main main'
-    'menu main main main main main'
-    'menu main main main main main'
-    'menu main main main main main'
-    'menu main main main main main'
-    'menu main main main main main'
-    'menu main main main main main'
-    'menu main main main main main'
     'menu main main main main main'
     'menu main main main main main'
     'todoform main main main main main';
@@ -43,11 +30,12 @@
 
 body{
   background-color: #d2cdcd;
+  box-sizing: border-box;
 }
 
 
 /* Form Items */
-input[type=text], input[type=datetime]{
+input[type=text], input[type=datetime-local]{
   padding: 10px;
   width: 50%;
   margin: 10px 0;
@@ -59,9 +47,23 @@ input[type=text], input[type=datetime]{
   width: 50%;
 }
 
-table{
+a{
+  padding-left: 10px;
+}
+
+ol{
+  overflow:auto;
+  display:flexbox;
+  padding-right: 50px;
+}
+
+li{
   font-size: 16px;
   font-family: monospace;
-  width: 50%;
-  padding: 10px;
+  list-style: none;
+}
+
+hr{
+  border-style: dashed;
+
 }

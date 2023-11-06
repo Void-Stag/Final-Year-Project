@@ -12,27 +12,23 @@
     <button class="addtask" role="button">Account Settings</button>
   </div>
   <div class="menu">
-      <table class="tasks">
+    <ol>
         {% for task in tasks %}
-        <tr>
-          <td>
+          <li>
             {{ task.taskname }}
-          </td>
-          <td>
+            <br>
             {{ task.duedate }}
-          </td>
-          <td>
             <a href="/delete_task/{{task.id}}">Delete</a>
-          </td>
-        </tr>
+          </li>
+          <hr>
         {% endfor %}
-      </table>
+      </ol>
   </div>
   <div class="todoform">
     <form action="/addtask" method="POST">
       <input type="text" name="taskname" placeholder="To-Do Task Name" class="" required="required">
       <br>
-      <input type="datetime" name="duedate" placeholder="Due date DD/MM/YYYY" required="required">
+      <input type="datetime-local" name="duedate" placeholder="Due date DD/MM/YYYY" required="required">
       <br>
       <button type="submit" class="addtask" id="addtask">Add To-Do Task</button>
     </form>
@@ -44,17 +40,4 @@
   <div class="main">Notes</div>
 
 </div>
-{% endblock %}
-{% block scripts %}
-{{super ()}}
-<script>
-
-  function add_data(data) {
-    $("#addtask").click(function () {//when the form button is pressed, code below is executed
-      console.log('addtask 1')
-      $.getJSON(update_data)//calls the update data function
-      console.log('addtask 2')
-    });
-  }
-</script>
 {% endblock %}
