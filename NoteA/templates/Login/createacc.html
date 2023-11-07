@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import 'Login/wtf.html' as wtfx %}
 
 {% block styles %}
     <link href="static/css/loginpage.css" rel="stylesheet">
@@ -10,21 +11,19 @@
     <div class="login">
         <img src="{{url_for('static', filename='images/Note Armadillo.png')}}" alt="Logo">
         <div>
-            <form action="">
+            <form action="" method="POST">
                 <p>Please input a username and password <br>into the required fields.
-                    <p class="list">Password must be between 8 & 10 characters</p>
+                    <p class="list">Password must be between 8 & 20 characters</p>
                 </p>
-              <input type="text" name="Username" placeholder="Username" class="" required="required">
+                {{ accform.hidden_tag() }}
+                {{ accform.csrf_token }}
+            {{ wtfx.form_field(accform.Username, id='font', placeholder="Username") }}
               <br>
-              <input type="password" name="Password" placeholder="Password" required="required">
+              {{ wtfx.form_field(accform.Password, id='font', placeholder="Password") }}
               <br>
-              <input type="password" name="PasswordRetype" placeholder="Retype Password" required="required">
+              {{ wtfx.form_field(accform.PasswordRetype, id='font', placeholder="Retype Password") }}
               <br>
-              <button type="submit" class="login">Create Account</button>
-            </form>
-            <hr>
-            <form action="{{ url_for('main.login')}}">
-                <button type=submit class="login">Back to Login</button>
+              {{ wtfx.form_field(accform.CreateAccount) }}
             </form>
         </div>
     </div>

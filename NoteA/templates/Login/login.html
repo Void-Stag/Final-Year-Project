@@ -19,9 +19,9 @@
             <form action="" method="POST">
                 {{ loginform.hidden_tag() }}
                 {{ loginform.csrf_token }}
-              {{ wtfx.form_field(loginform.Username) }}
+              {{ wtfx.form_field(loginform.Username, id='font', placeholder="Username") }}
               <br>
-              {{ wtfx.form_field(loginform.Password) }}
+              {{ wtfx.form_field(loginform.Password, id='font', placeholder="Password") }}
               <br>
               {{ wtfx.form_field(loginform.Login) }}
             </form>

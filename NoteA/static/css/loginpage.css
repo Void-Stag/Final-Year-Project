@@ -35,11 +35,12 @@ img{
 }
 
 /* Form Items */
-input[type=text], input[type=password]{
+[type="submit"], [type="text"], [type="password"], #font{
     padding: 10px;
     width: 50%;
     margin: 10px 0;
-    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    font-size: 16px;
+    font-family: monospace;
 }
 
 .login{
