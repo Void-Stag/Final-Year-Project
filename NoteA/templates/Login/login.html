@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import 'Login/wtf.html' as wtfx %}
 
 {% block styles %}
     <link href="static/css/loginpage.css" rel="stylesheet">
@@ -15,19 +16,21 @@
              servers required.
         </p>
         <div>
-            <form action="">
-              <input type="text" name="Username" placeholder="Username" class="" required="required">
+            <form action="" method="POST">
+                {{ loginform.hidden_tag() }}
+                {{ loginform.csrf_token }}
+              {{ wtfx.form_field(loginform.Username) }}
               <br>
-              <input type="password" name="Password" placeholder="Password" required="required">
+              {{ wtfx.form_field(loginform.Password) }}
               <br>
-              <button type="submit" class="login">Login</button>
+              {{ wtfx.form_field(loginform.Login) }}
             </form>
             <hr>
-            <form action="{{ url_for('web.createaccount')}}">
+            <form action="{{ url_for('data.CreateAccountRoot')}}">
                 <button type=submit class="login">Create Account</button>
             </form>
             <form action="{{ url_for('web.home')}}">
-                <button type=submit class="login">Home Bypass</button>
+                <button type=submit class="login" href="{{ url_for('web.home')}}">Home Bypass</button>
             </form>
         </div>
     </div>

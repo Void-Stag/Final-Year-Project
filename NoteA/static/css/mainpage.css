@@ -1,7 +1,7 @@
 /* Grid Placement*/
 .header { grid-area: header; }
 .menu { grid-area: menu;
-        grid-row-end: span 3;}
+        grid-row-end: span 4;}
 .main { grid-area: main; }
 .buttonmenu {grid-area: buttonmenu;}
 .headermenu {grid-area: headermenu;}
@@ -64,6 +64,6 @@ li{
 }
 
 hr{
-  border-style: dashed;
+  border-style: dashed black;
 
 }

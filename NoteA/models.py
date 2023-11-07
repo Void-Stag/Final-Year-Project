@@ -1,4 +1,5 @@
 from app import db
+from flask_login import UserMixin
 
 class Task(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -11,3 +12,15 @@ class Task(db.Model):
 
     def __repr__(self):
         return f'<Task {self.taskname}>'
+
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key = True)
+    username = db.Column(db.String(50))
+    password = db.Column(db.String(20))
+
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+
+    def __repr__(self):
+        return f'<Task {self.username}>'

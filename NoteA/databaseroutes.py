@@ -1,6 +1,7 @@
-from flask import Blueprint, redirect, request
+from flask import Blueprint, redirect, request, render_template
 from run import db
-from models import Task
+from models import Task, User
+from auth.forms import UserLogin, CreateAccount
 from datetime import datetime
 data = Blueprint('data', __name__, template_folder='templates')
 
@@ -17,7 +18,7 @@ def addtask():
 
     return redirect('/home')
 
-@data.route('/delete_task/<int:id>', methods=['GET', 'POST'])
+@data.route('/delete_task/<int:id>', methods=['DELETE'])
 def delete_task(id):
     if id:
         try:
@@ -26,3 +27,15 @@ def delete_task(id):
         except Exception as error:
             print(f"delete_task [{id}] Fail {error}")
     return redirect('/home')
+
+#User Account & Login
+@data.route('/CreateAccount', methods=['GET', 'POST'])
+def CreateAccountRoot():
+    accform = CreateAccount()
+    return render_template('Login/createacc.html', title='Create Account', accform=accform)
+
+@data.route('/')
+@data.route('/login', methods=['GET', 'POST'])
+def login():
+    loginform = UserLogin()
+    return render_template('Login/login.html', title='Login', loginform=loginform)

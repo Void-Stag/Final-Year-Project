@@ -2,6 +2,7 @@ from app import NoteA, db
 from routes import *
 from models import *
 from databaseroutes import *
+from auth.forms import *
 
 NoteA.register_blueprint(web)
 NoteA.register_blueprint(data)
