@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link href="static/css/notepage.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="grid-container">
+    <div class="header">
+    </div>
+    <div class="headermenu">
+      <button class="button" role="button">Account Settings</button>
+    </div>
+    <div class="buttonmenu">
+      <button class="button" role="button">Back</button>
+    </div>
+    <div class="space"></div>
+    <div class="main">
+        <form>
+            <input type="text" class="title" placeholder="Title.." required="required">
+            <br>
+            <textarea type="text" class="content" placeholder="Type here..." required="required" cols="70" rows="26"></textarea>
+            <br>
+            <button type="submit" class="button">Create Note</button>
+        </form>
+    </div>
+
+</div>
+{% endblock %}

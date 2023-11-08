@@ -18,7 +18,7 @@ def addtask():
 
     return redirect('/home')
 
-@data.route('/delete_task/<int:id>', methods=['DELETE'])
+@data.route('/delete_task/<int:id>', methods=['GET', 'POST'])
 def delete_task(id):
     if id:
         try:

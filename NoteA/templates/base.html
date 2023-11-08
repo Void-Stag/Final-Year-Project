@@ -4,6 +4,8 @@
     <head>
         {% block styles %}{% endblock %}
         <title>Note Armadillo</title>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico')}}">
+        <script src="https://kit.fontawesome.com/c3f98b7b36.js" crossorigin="anonymous"></script>
     </head>
 
 
@@ -12,7 +14,6 @@
 
     </body>
     {% block scripts %}
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     {% endblock %}
 </html>
 
