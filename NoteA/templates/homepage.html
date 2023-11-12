@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link href="static/css/mainpage.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="grid-container">
+  <div class="header">
+  </div>
+
+  <div class="headermenu">
+    <form action="{{ url_for('web.AccountSettings')}}">
+      <button class="addtask" type="submit">Account Settings <i class="fa-solid fa-user-gear"></i></button>
+    </form>
+  </div>
+
+  <div class="menu">
+    <ol>
+      {% for task in tasks %}
+      <li>
+        {{ task.taskname }}
+        <br>
+        {{ task.duedate }}
+        <a href="/delete_task/{{task.id}}"><i class="fa-solid fa-trash-can"></i></a>
+      </li>
+      <hr>
+      {% endfor %}
+    </ol>
+  </div>
+
+  <div class="todoform">
+    <form action="/addtask" method="POST">
+      <input type="text" name="taskname" placeholder="To-Do Task Name" required="required">
+      <br>
+      <input type="datetime-local" name="duedate" placeholder="Due date DD/MM/YYYY" required="required">
+      <br>
+      <button type="submit" class="addtask">Add To-Do Task</button>
+    </form>
+  </div>
+
+  <div class="buttonmenu">
+    <form action="{{ url_for('web.CreateNote')}}">
+      <button class="addtask" role="button">New Note <i class="fa-solid fa-pen-to-square"></i></button>
+    </form>
+  </div>
+
+  <div class="space"></div>
+
+  <div class="main">
+    <ol>
+      {% for note in notes %}
+      <li>
+        {{ note.title }}
+        <br>
+        {{ note.created_at }}
+        <br>
+        {{ note.content }}
+      </li>
+      <hr>
+      {% endfor %}
+    </ol>
+  </div>
+
+</div>
+{% endblock %}

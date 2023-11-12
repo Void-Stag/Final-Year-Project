@@ -1,0 +1,68 @@
+/* Grid Placement*/
+.header { grid-area: header; }
+.main { grid-area: main; }
+.buttonmenu {grid-area: buttonmenu;}
+.headermenu {grid-area: headermenu;}
+.space {grid-area: space;}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header headermenu'
+    'buttonmenu space space space space'
+    'main main main main main'
+    'main main main main main'
+    'main main main main main';
+  gap: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 5px;
+}
+
+.grid-container > div {
+  background-color: rgba(197, 72, 72, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+body{
+  background-color: #d2cdcd;
+  box-sizing: border-box;
+}
+
+
+/* Form Items */
+.title{
+  padding: 10px;
+  width: 45%;
+  margin: 10px 0;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  transition: width 0.4s ease-in-out;
+  margin-right: 10%;
+}
+
+.title:focus {
+  width: 65%;
+}
+
+.content{
+  padding: 10px;
+  width: 75%;
+  height: 85%;
+  margin: 10px 0;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
+
+.button{
+  padding: 10px;
+  max-width: 50%;
+}
+
+a{
+  padding-left: 10px;
+}
+
+hr{
+  border-style: dashed black;
+
+}

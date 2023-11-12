@@ -1,0 +1,72 @@
+/* Grid Placement*/
+.header { grid-area: header; }
+.menu { grid-area: menu;
+        grid-row-end: span 4;}
+.main { grid-area: main;
+        overflow: auto;/*Adds scrollbars to element when the content no longer fits*/
+        /*max-width: fit-content;/* Specifies the max width/ how wide the content can be*/
+        height: 75%;/* Specifies height of element*/}
+.buttonmenu {grid-area: buttonmenu;}
+.headermenu {grid-area: headermenu;}
+.todoform {grid-area: todoform;}
+.space {grid-area: space;}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'menu header header header header headermenu'
+    'menu buttonmenu space space space space'
+    'menu main main main main main'
+    'menu main main main main main'
+    'todoform main main main main main';
+  gap: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 5px;
+}
+
+.grid-container > div {
+  background-color: rgba(197, 72, 72, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+body{
+  background-color: #d2cdcd;
+  box-sizing: border-box;
+}
+
+
+/* Form Items */
+input[type=text], input[type=datetime-local]{
+  padding: 10px;
+  width: 50%;
+  margin: 10px 0;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
+
+.addtask{
+  padding: 10px;
+  width: 50%;
+}
+
+a{
+  padding-left: 10px;
+}
+
+ol{
+  overflow:auto;
+  display:flexbox;
+  padding-right: 50px;
+}
+
+li{
+  font-size: 16px;
+  font-family: monospace;
+  list-style: none;
+}
+
+hr{
+  border-style: dashed black;
+
+}
