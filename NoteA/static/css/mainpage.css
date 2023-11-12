@@ -2,7 +2,10 @@
 .header { grid-area: header; }
 .menu { grid-area: menu;
         grid-row-end: span 4;}
-.main { grid-area: main; }
+.main { grid-area: main;
+        overflow: auto;/*Adds scrollbars to element when the content no longer fits*/
+        /*max-width: fit-content;/* Specifies the max width/ how wide the content can be*/
+        height: 75%;/* Specifies height of element*/}
 .buttonmenu {grid-area: buttonmenu;}
 .headermenu {grid-area: headermenu;}
 .todoform {grid-area: todoform;}

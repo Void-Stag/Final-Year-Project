@@ -4,7 +4,6 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
-
 def read_config(appconfig):
     if os.path.isfile(appconfig):
         with open(appconfig, 'r', encoding="utf-8") as config_file:

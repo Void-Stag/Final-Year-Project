@@ -16,7 +16,7 @@ class CreateAccount(FlaskForm):
     PasswordRetype = PasswordField('', validators=[DataRequired(), EqualTo('Password', 'Passwords must match')])
     CreateAccount = SubmitField('Create Account')
 
-    def validate_username(self, Username):
+    def validate_username(self, Username, Password):
         user = User.query.filter_by(username=Username.data).first()
         if user is not None:
             raise ValidationError('Please use a different username.')

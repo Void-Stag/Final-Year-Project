@@ -9,17 +9,21 @@
     <div class="header">
     </div>
     <div class="headermenu">
-      <button class="button" role="button">Account Settings</button>
+      <form action="/AccountSettings">
+        <button class="button" type="submit">Account Settings <i class="fa-solid fa-user-gear"></i></button>
+      </form>
     </div>
     <div class="buttonmenu">
+      <form action="/home">
       <button class="button" role="button">Back</button>
+    </form>
     </div>
     <div class="space"></div>
     <div class="main">
-        <form>
-            <input type="text" class="title" placeholder="Title.." required="required">
+        <form action="/addnote" method="POST">
+            <input type="text" name="title" class="title" placeholder="Title.." required="required">
             <br>
-            <textarea type="text" class="content" placeholder="Type here..." required="required" cols="70" rows="26"></textarea>
+            <textarea type="text"  name="content" class="content" placeholder="Type here..." required="required" cols="70" rows="26"></textarea>
             <br>
             <button type="submit" class="button">Create Note</button>
         </form>

@@ -16,7 +16,7 @@
              servers required.
         </p>
         <div>
-            <form action="" method="POST">
+            <form action="/login" method="POST">
                 {{ loginform.hidden_tag() }}
                 {{ loginform.csrf_token }}
               {{ wtfx.form_field(loginform.Username, id='font', placeholder="Username") }}
@@ -29,7 +29,7 @@
             <form action="{{ url_for('data.CreateAccountRoot')}}">
                 <button type=submit class="login">Create Account</button>
             </form>
-            <form action="{{ url_for('web.home')}}">
+            <form action="{{ url_for('web.Home')}}">
                 <button type=submit class="login">Home Bypass</button>
             </form>
         </div>

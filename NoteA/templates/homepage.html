@@ -47,7 +47,20 @@
 
   <div class="space"></div>
 
-  <div class="main">Notes</div>
+  <div class="main">
+    <ol>
+      {% for note in notes %}
+      <li>
+        {{ note.title }}
+        <br>
+        {{ note.created_at }}
+        <br>
+        {{ note.content }}
+      </li>
+      <hr>
+      {% endfor %}
+    </ol>
+  </div>
 
 </div>
 {% endblock %}
