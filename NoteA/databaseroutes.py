@@ -82,4 +82,12 @@ def addnote():
 
     return redirect('/home')
 
-
+@data.route('/delete_note/<int:id>', methods=['GET', 'POST'])
+def delete_note(id):
+    if id:
+        try:
+            Note.query.filter(Note.id == id).delete()
+            db.session.commit()
+        except Exception as error:
+            print(f"delete_note [{id}] Fail {error}")
+    return redirect('/home')

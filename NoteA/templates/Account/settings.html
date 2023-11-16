@@ -1,4 +1,20 @@
 {% extends "base.html" %}
+{% block styles %}
+<link href="static/css/accountpage.css" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
+<div class="grid-container">
+
+    <div class="setting">
+        <form action="{{ url_for('web.Home')}}">
+            <button type=submit class="login">Back</button>
+        </form>
+        <hr>
+        <p>Change Password:</p><br>
+
+
+    </div>
+
+</div>
 {% endblock %}

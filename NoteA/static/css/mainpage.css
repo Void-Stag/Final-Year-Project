@@ -1,11 +1,11 @@
 /* Grid Placement*/
 .header { grid-area: header; }
 .menu { grid-area: menu;
-        grid-row-end: span 4;}
+        height: 80vh;}
 .main { grid-area: main;
         overflow: auto;/*Adds scrollbars to element when the content no longer fits*/
         /*max-width: fit-content;/* Specifies the max width/ how wide the content can be*/
-        height: 75%;/* Specifies height of element*/}
+        height: 85vh;/* Specifies height of element*/}
 .buttonmenu {grid-area: buttonmenu;}
 .headermenu {grid-area: headermenu;}
 .todoform {grid-area: todoform;}
@@ -54,19 +54,36 @@ a{
   padding-left: 10px;
 }
 
+ol.notes{
+  display: inline-block;
+  overflow: auto;
+}
+
 ol{
   overflow:auto;
-  display:flexbox;
-  padding-right: 50px;
+  display:flex;
+  padding: 30px;
 }
 
 li{
   font-size: 16px;
   font-family: monospace;
   list-style: none;
+  display: inline;
+}
+
+li.notes{
+  font-size: 16px;
+  font-family: monospace;
+  list-style: none;
+  display: inline;
 }
 
 hr{
   border-style: dashed black;
 
+}
+
+a{
+  padding-left: 10px;
 }
