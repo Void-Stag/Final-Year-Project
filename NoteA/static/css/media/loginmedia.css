@@ -1,0 +1,116 @@
+/* Screen resize for Login */
+
+/* smartphones, iPhone, portrait 480x320 phones */
+@media only screen and (max-width:320px)  {
+    p{
+        font-size: 3vw;
+    }
+    .loginspace{
+        max-width: 10em;
+
+        margin-right: 5vw;
+
+        max-height: 13em;
+        min-height: 10em;
+    }
+
+
+    img{
+        max-width: 3em;
+        min-width: 1em;
+    }
+
+    [type="submit"], [type="text"], [type="password"], #font{
+        padding: 1vw;
+        max-width: 8em;
+        min-width: 5em;
+        margin: 6px;
+        font-size: 4vw;
+        font-family: monospace;
+    }
+}
+
+/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+@media only screen and (max-width:481px)  {
+    .loginspace{
+        max-width: 16em;
+
+        margin-right: 8vw;
+        margin-bottom: 8vw;
+
+        max-height: 25em;
+        min-height: 10em;
+    }
+
+    img{
+        max-width: 5em;
+        min-width: 1em;
+    }
+
+    [type="submit"], [type="text"], [type="password"], #font{
+        padding: 1vw;
+        max-width: 10em;
+
+        margin: 6px;
+        font-size: 4vw;
+        font-family: monospace;
+    }
+  }
+
+/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+@media only screen and (max-width:641px)  {
+    .loginspace{
+        max-width: 300em;
+
+        margin-top: 8vw;
+
+        max-height: 135em;
+        min-height: 10em;
+    }
+
+    img{
+        max-width: 15em;
+        min-width: 1em;
+    }
+
+    [type="submit"], [type="text"], [type="password"], #font{
+        padding: 1vw;
+        max-width: 10em;
+        min-width: 5em;
+        margin: 10px;
+        font-size: 4vw;
+        font-family: monospace;
+    }
+}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media only screen and (max-width:961px)  {
+    .loginspace{
+        width: 90vw;
+        margin-top: 0vw;
+        padding: 2vw;
+        margin-right: 0vw;
+        margin-left: 0vw;
+        margin-bottom: 0em;
+    }
+    .grid-container{
+        padding: 20px
+    }
+    img{
+        max-width: 3em;
+        min-width: 1em;
+    }
+
+    [type="submit"], [type="text"], [type="password"], #font{
+        padding: 1vw;
+        max-width: 12em;
+        min-width: 5em;
+        margin: 20px;
+        font-size: 4vw;
+        font-family: monospace;
+    }
+}
+
+
+
+

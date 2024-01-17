@@ -3,37 +3,31 @@
 
 {% block styles %}
     <link href="static/css/loginpage.css" rel="stylesheet">
+    <link href="static/css/media/loginmedia.css" rel="stylesheet">
+
 {% endblock %}
 
 {% block content %}
 <div class="grid-container">
-
-    <div class="login">
-        <img src="{{url_for('static', filename='images/Note Armadillo.png')}}" alt="Logo">
+    <div class="loginspace">
+        <img src="{{url_for('static', filename='images/Note Armadillo.png')}}" alt=" Armadillo Logo">
         <p>
             All your notes securely in one place.<br>
             You hold all your data. No online<br>
-             servers required.
+            servers required.
         </p>
         <div>
-            <form action="/login" method="POST">
+            <form action="/login" method="POST" aria-label="Login Form">
                 {{ loginform.hidden_tag() }}
-                {{ loginform.csrf_token }}
-              {{ wtfx.form_field(loginform.Username, id='font', placeholder="Username") }}
-              <br>
-              {{ wtfx.form_field(loginform.Password, id='font', placeholder="Password") }}
-              <br>
-              {{ wtfx.form_field(loginform.Login) }}
+                {{ wtfx.form_field(loginform.Username, id='font', placeholder="Username") }}
+                {{ wtfx.form_field(loginform.Password, id='font', placeholder="Password") }}
+                {{ wtfx.form_field(loginform.Login) }}
             </form>
             <hr>
             <form action="{{ url_for('data.CreateAccountRoot')}}">
                 <button type=submit class="login">Create Account</button>
             </form>
-            <form action="{{ url_for('web.Home')}}">
-                <button type=submit class="login">Home Bypass</button>
-            </form>
         </div>
     </div>
-
 </div>
 {% endblock %}

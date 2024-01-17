@@ -84,6 +84,11 @@ hr{
 
 }
 
-a{
+.deletenote{
+  padding: 15px;
+}
+
+.deletetask{
   padding-left: 10px;
+  padding: 15px;
 }

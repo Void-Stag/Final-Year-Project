@@ -1,7 +1,10 @@
 /* Grid Placement*/
-.login { grid-area: login;
+.loginspace {
+        grid-area: login;
         justify-items: center;
-        align-items: center;}
+        align-items: center;
+        max-width: 50%;
+        margin-top: 5%;}
 .backleft { grid-area: backl; }
 .backright { grid-area: backr; }
 
@@ -30,15 +33,16 @@ body{
 
 }
 img{
-    max-width: 100%;
-    height: auto;
+    width:fit-content;
+    height:fit-content;
+    padding: 10px;
 }
 
 /* Form Items */
 [type="submit"], [type="text"], [type="password"], #font{
     padding: 10px;
     width: 50%;
-    margin: 2px;
+    margin: 10px;
     font-size: 16px;
     font-family: monospace;
 }
