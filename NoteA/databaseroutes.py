@@ -1,5 +1,5 @@
 from flask import Blueprint, redirect, request, render_template, flash, url_for
-from flask_login import login_user
+from flask_login import login_user, logout_user, current_user, LoginManager
 from run import db
 from models import Task, User, Note
 from auth.forms import UserLogin, CreateAccount
@@ -69,6 +69,10 @@ def login():
     return render_template('Login/login.html', title='Login', loginform=loginform)
 
 @data.route('/logout', methods=['GET','POST'])
+def logout():
+    logout_user()
+    flash("You've signed out!", "success")
+    return redirect('/login')
 
 #Notes
 @data.route('/addnote', methods=['POST'])

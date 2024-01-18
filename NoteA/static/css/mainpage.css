@@ -85,7 +85,7 @@ li.notes {
   display: inline;
 }
 
-.deletenote {
+.deletenote,editnote {
   padding: 15px;
 }
 
@@ -94,6 +94,10 @@ li.notes {
   padding: 15px;
 }
 
+.hspacer{
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
 .note-element{
   background-color: whitesmoke;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);

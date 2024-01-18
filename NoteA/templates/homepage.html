@@ -13,7 +13,7 @@
     <div class="buttongroup">
       <a class="button" href="{{ url_for('web.CreateNote')}}">New Note <i class="fa-solid fa-pen-to-square icon"></i></a>
       <a class="button" href="{{ url_for('web.AccountSettings')}}"> Account Settings <i class="fa-solid fa-user-gear icon"></i></a>
-      <a class="button" href="{{ url_for('web.AccountSettings')}}"> Logout <i class="fa-solid fa-arrow-up-from-bracket icon"></i></a>
+      <a class="button" href="{{ url_for('data.logout')}}"> Logout <i class="fa-solid fa-right-from-bracket icon"></i></a>
     </div>
   </section>
 
@@ -23,7 +23,7 @@
       <ol>
         <li>
           {{ task.taskname }}
-          <br>
+          <p class="hspacer"></p>
           {{ task.duedate }}
         </li>
         <li>
@@ -63,6 +63,13 @@
     </ol>
     <ol class="notes">
       <li class="notes">
+        <form class="editnote" action="/edit_note/{{note.id}}" method="post">
+          <button class="button" type="submit"><i class="fa-solid fa-pencil"></i></button>
+        </form>
+      </li>
+    </ol>
+    <ol class="notes">
+      <li class="notes">
         <form class="deletenote" action="/delete_note/{{note.id}}" method="post">
           <button class="button" type="submit"><i class="fa-solid fa-trash-can"></i></button>
         </form>
@@ -70,7 +77,6 @@
     </ol>
   </div>
     {% endfor %}
-    </ol>
   </section>
 
 </div>
