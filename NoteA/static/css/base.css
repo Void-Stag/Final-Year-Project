@@ -1,0 +1,13 @@
+body{
+    background-color: rgb(52, 92, 52);
+
+}
+
+.grid-container> section {
+    background-color: beige;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+    border-radius: 10px;
+    box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
+  }

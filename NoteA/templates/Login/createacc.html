@@ -9,9 +9,9 @@
 {% block content %}
 <div class="grid-container">
 
-    <div class="loginspace">
+    <section class="loginspace">
         <img src="{{url_for('static', filename='images/Note Armadillo.png')}}" alt="Logo">
-        <div>
+        <section>
             <form action="" method="POST">
                 <p>Please input a username and password <br>into the required fields.
                 <p class="list">Password must be between 8 & 20 characters</p>
@@ -22,8 +22,8 @@
                 {{ wtfx.form_field(accform.PasswordRetype, id='font', placeholder="Retype Password") }}
                 {{ wtfx.form_field(accform.CreateAccount) }}
             </form>
-        </div>
-    </div>
+        </section>
+    </section>
 
 </div>
 {% endblock %}

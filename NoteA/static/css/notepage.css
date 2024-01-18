@@ -18,17 +18,12 @@
   padding: 5px;
 }
 
-.grid-container > div {
+/* .grid-container > section {
   background-color: rgba(197, 72, 72, 0.8);
   text-align: center;
   padding: 20px 0;
   font-size: 30px;
-}
-
-body{
-  background-color: #d2cdcd;
-  box-sizing: border-box;
-}
+} */
 
 
 /* Form Items */

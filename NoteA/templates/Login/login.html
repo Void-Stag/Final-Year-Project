@@ -9,14 +9,14 @@
 
 {% block content %}
 <div class="grid-container">
-    <div class="loginspace">
+    <section class="loginspace">
         <img src="{{url_for('static', filename='images/Note Armadillo.png')}}" alt=" Armadillo Logo">
         <p>
             All your notes securely in one place.<br>
             You hold all your data. No online<br>
             servers required.
         </p>
-        <div>
+        <section>
             <form action="/login" method="POST" aria-label="Login Form">
                 {{ loginform.hidden_tag() }}
                 {{ wtfx.form_field(loginform.Username, id='font', placeholder="Username") }}
@@ -27,7 +27,7 @@
             <form action="{{ url_for('data.CreateAccountRoot')}}">
                 <button type=submit class="login">Create Account</button>
             </form>
-        </div>
-    </div>
+        </section>
+    </section>
 </div>
 {% endblock %}

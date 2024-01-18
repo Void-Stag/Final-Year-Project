@@ -6,16 +6,10 @@
 
 {% block content %}
 <div class="grid-container">
-  <div class="header">
-  </div>
+  <section class="header">
+  </section>
 
-  <div class="headermenu">
-    <form action="{{ url_for('web.AccountSettings')}}" method="post">
-      <button class="addtask" type="submit">Account Settings <i class="fa-solid fa-user-gear"></i></button>
-    </form>
-  </div>
-
-  <div class="menu">
+  <section class="todo">
     {% for task in tasks %}
     <ol>
       <li>
@@ -30,9 +24,9 @@
       </li>
       {% endfor %}
     </ol>
-  </div>
+  </section>
 
-  <div class="todoform">
+  <section class="todoform">
     <form action="/addtask" method="POST">
       <input type="text" name="taskname" placeholder="To-Do Task Name" required="required">
       <br>
@@ -40,17 +34,20 @@
       <br>
       <button type="submit" class="addtask">Add To-Do Task</button>
     </form>
-  </div>
+  </section>
 
-  <div class="buttonmenu">
+  <section class="buttonmenu">
     <form action="{{ url_for('web.CreateNote')}}">
       <button class="addtask" role="button">New Note <i class="fa-solid fa-pen-to-square"></i></button>
     </form>
-  </div>
 
-  <div class="space"></div>
+    <form action="{{ url_for('web.AccountSettings')}}" method="post">
+      <button class="addtask" type="submit">Account Settings <i class="fa-solid fa-user-gear"></i></button>
+    </form>
+  </section>
 
-  <div class="main">
+
+  <section class="note">
     {% for note in notes %}
     <ol class="notes">
       <li class="notes">
@@ -60,7 +57,7 @@
       </li>
     </ol>
     <ol class="notes">
-    <li class="notes">
+      <li class="notes">
         {{ note.created_at }}
       </li>
     </ol>
@@ -71,10 +68,10 @@
         </form>
       </li>
     </ol>
-      <hr>
-      {% endfor %}
+    <hr>
+    {% endfor %}
     </ol>
-  </div>
+  </section>
 
 </div>
 {% endblock %}
