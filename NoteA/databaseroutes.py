@@ -1,5 +1,5 @@
 from flask import Blueprint, redirect, request, render_template, flash, url_for
-from flask_login import login_user
+from flask_login import login_user, logout_user, current_user, LoginManager
 from run import db
 from models import Task, User, Note
 from auth.forms import UserLogin, CreateAccount
@@ -68,6 +68,12 @@ def login():
         return redirect('/home')
     return render_template('Login/login.html', title='Login', loginform=loginform)
 
+@data.route('/logout', methods=['GET','POST'])
+def logout():
+    logout_user()
+    flash("You've signed out!", "success")
+    return redirect('/login')
+
 #Notes
 @data.route('/addnote', methods=['POST'])
 def addnote():
@@ -82,4 +88,12 @@ def addnote():
 
     return redirect('/home')
 
-
+@data.route('/delete_note/<int:id>', methods=['GET', 'POST'])
+def delete_note(id):
+    if id:
+        try:
+            Note.query.filter(Note.id == id).delete()
+            db.session.commit()
+        except Exception as error:
+            print(f"delete_note [{id}] Fail {error}")
+    return redirect('/home')

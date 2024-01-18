@@ -1,72 +1,115 @@
 /* Grid Placement*/
-.header { grid-area: header; }
-.menu { grid-area: menu;
-        grid-row-end: span 4;}
-.main { grid-area: main;
-        overflow: auto;/*Adds scrollbars to element when the content no longer fits*/
-        /*max-width: fit-content;/* Specifies the max width/ how wide the content can be*/
-        height: 75%;/* Specifies height of element*/}
-.buttonmenu {grid-area: buttonmenu;}
-.headermenu {grid-area: headermenu;}
-.todoform {grid-area: todoform;}
-.space {grid-area: space;}
+.header {
+  grid-area: header;
+}
+
+.buttonmenu {
+  grid-area: buttonmenu;
+}
+
+.todo {
+  grid-area: todo;
+  min-height: 50vh;
+  max-height: 72vh;
+  overflow: auto;
+}
+
+.note {
+  grid-area: note;
+  overflow: auto;/*Adds scrollbars to element when the content no longer fits*/
+  height: 83vh;/* Specifies height of element*/
+}
+
+.todoform {
+  grid-area: todoform;
+}
+
 
 .grid-container {
   display: grid;
   grid-template-areas:
-    'menu header header header header headermenu'
-    'menu buttonmenu space space space space'
-    'menu main main main main main'
-    'menu main main main main main'
-    'todoform main main main main main';
+    'todo header header buttonmenu buttonmenu buttonmenu'
+    'todo note note note note note'
+    'todo note note note note note'
+    'todoform note note note note note';
   gap: 10px;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgba(52, 92, 52);
   padding: 5px;
 }
 
-.grid-container > div {
-  background-color: rgba(197, 72, 72, 0.8);
-  text-align: center;
-  padding: 20px 0;
-  font-size: 30px;
-}
-
-body{
-  background-color: #d2cdcd;
-  box-sizing: border-box;
-}
-
-
 /* Form Items */
-input[type=text], input[type=datetime-local]{
+input[type=text],
+input[type=datetime-local] {
   padding: 10px;
-  width: 50%;
+  width: 75%;
   margin: 10px 0;
-  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
 }
 
-.addtask{
+.addtask {
   padding: 10px;
   width: 50%;
 }
 
-a{
+a {
   padding-left: 10px;
+  font-family: monospace;
 }
 
-ol{
-  overflow:auto;
-  display:flexbox;
-  padding-right: 50px;
+ol.notes {
+  display: inline-block;
+  overflow: auto;
 }
 
-li{
+ol {
+  overflow: auto;
+  display: flex;
+  padding: 30px;
+  margin: 0;
+}
+
+
+li {
   font-size: 16px;
   font-family: monospace;
   list-style: none;
+  display: inline;
 }
 
-hr{
-  border-style: dashed black;
 
+
+li.notes {
+  font-size: 16px;
+  font-family: monospace;
+  list-style: none;
+  display: inline;
+}
+
+.deletenote,editnote {
+  padding: 15px;
+}
+
+.deletetask {
+  padding-left: 10px;
+  padding: 15px;
+}
+
+.hspacer{
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+.note-element{
+  background-color: whitesmoke;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: auto;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.task-element{
+  background-color: whitesmoke;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: auto;
+  margin: 5px;
+  border-radius: 10px;
 }

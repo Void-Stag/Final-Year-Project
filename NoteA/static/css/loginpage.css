@@ -1,65 +1,68 @@
 /* Grid Placement*/
-.login { grid-area: login;
-        justify-items: center;
-        align-items: center;}
-.backleft { grid-area: backl; }
-.backright { grid-area: backr; }
+.loginspace {
+    grid-area: login;
+    justify-items: center;
+    align-items: center;
+    max-width: 50%;
+    margin-top: 5%;
+}
+
+.backleft {
+    grid-area: backl;
+}
+
+.backright {
+    grid-area: backr;
+}
 
 
 .grid-container {
-  display: grid;
-  grid-template-areas:
-    'backleft backleft back back backright backright'
-    'backleft backleft login login backright backright'
-    'backleft backleft back back backright backright';
-  gap: 10px;
-  background-color: rgba(255, 255, 255, 0);
-  padding: 10px;
+    display: grid;
+    grid-template-areas:
+        'backleft backleft back back backright backright'
+        'backleft backleft login login backright backright'
+        'backleft backleft back back backright backright';
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 10px;
 }
 
-.grid-container > div {
-  background-color: rgb(255, 255, 255);
-  text-align: center;
-  padding: 10px 0;
-  font-size: 30px;
-  box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
-}
-
-body{
-    background-color: rgb(52, 92, 52);
-
-}
-img{
-    max-width: 100%;
-    height: auto;
+img {
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 50%;
 }
 
 /* Form Items */
-[type="submit"], [type="text"], [type="password"], #font{
+[type="submit"],
+[type="text"],
+[type="password"],
+#font {
     padding: 10px;
     width: 50%;
-    margin: 2px;
+    margin: 10px;
     font-size: 16px;
     font-family: monospace;
 }
 
-.login{
+.login {
     padding: 10px;
     width: 50%;
     margin-bottom: 10px;
 }
 
-hr{
+hr {
     width: 75%;
 }
 
-p{
+p {
     font-size: 17px;
     font-family: monospace;
     padding: 2px;
 }
 
-.list{
+.list {
     font-size: 16px;
     font-family: monospace;
     list-style: none;

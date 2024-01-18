@@ -6,61 +6,78 @@
 
 {% block content %}
 <div class="grid-container">
-  <div class="header">
-  </div>
+  <section class="header">
+  </section>
 
-  <div class="headermenu">
-    <form action="{{ url_for('web.AccountSettings')}}">
-      <button class="addtask" type="submit">Account Settings <i class="fa-solid fa-user-gear"></i></button>
-    </form>
-  </div>
+  <section class="buttonmenu">
+    <div class="buttongroup">
+      <a class="button" href="{{ url_for('web.CreateNote')}}">New Note <i class="fa-solid fa-pen-to-square icon"></i></a>
+      <a class="button" href="{{ url_for('web.AccountSettings')}}"> Account Settings <i class="fa-solid fa-user-gear icon"></i></a>
+      <a class="button" href="{{ url_for('data.logout')}}"> Logout <i class="fa-solid fa-right-from-bracket icon"></i></a>
+    </div>
+  </section>
 
-  <div class="menu">
-    <ol>
-      {% for task in tasks %}
-      <li>
-        {{ task.taskname }}
-        <br>
-        {{ task.duedate }}
-        <a href="/delete_task/{{task.id}}"><i class="fa-solid fa-trash-can"></i></a>
-      </li>
-      <hr>
-      {% endfor %}
-    </ol>
-  </div>
+  <section class="todo">
+    {% for task in tasks %}
+    <div class="task-element">
+      <ol>
+        <li>
+          {{ task.taskname }}
+          <p class="hspacer"></p>
+          {{ task.duedate }}
+        </li>
+        <li>
+          <form class="deletetask" action="/delete_task/{{task.id}}" method="post">
+            <button class="button" type="submit"><i class="fa-solid fa-trash-can"></i></button>
+          </form>
+        </li>
+      </ol>
+    </div>
+    {% endfor %}
+  </section>
 
-  <div class="todoform">
+  <section class="todoform">
     <form action="/addtask" method="POST">
       <input type="text" name="taskname" placeholder="To-Do Task Name" required="required">
       <br>
       <input type="datetime-local" name="duedate" placeholder="Due date DD/MM/YYYY" required="required">
       <br>
-      <button type="submit" class="addtask">Add To-Do Task</button>
+      <button type="submit" class="button">Add To-Do Task</button>
     </form>
-  </div>
+  </section>
 
-  <div class="buttonmenu">
-    <form action="{{ url_for('web.CreateNote')}}">
-      <button class="addtask" role="button">New Note <i class="fa-solid fa-pen-to-square"></i></button>
-    </form>
-  </div>
-
-  <div class="space"></div>
-
-  <div class="main">
-    <ol>
-      {% for note in notes %}
-      <li>
+  <section class="note">
+    {% for note in notes %}
+    <div class="note-element">
+    <ol class="notes">
+      <li class="notes">
         {{ note.title }}
-        <br>
-        {{ note.created_at }}
         <br>
         {{ note.content }}
       </li>
-      <hr>
-      {% endfor %}
+    </ol>
+    <ol class="notes">
+      <li class="notes">
+        {{ note.created_at }}
+      </li>
+    </ol>
+    <ol class="notes">
+      <li class="notes">
+        <form class="editnote" action="/edit_note/{{note.id}}" method="post">
+          <button class="button" type="submit"><i class="fa-solid fa-pencil"></i></button>
+        </form>
+      </li>
+    </ol>
+    <ol class="notes">
+      <li class="notes">
+        <form class="deletenote" action="/delete_note/{{note.id}}" method="post">
+          <button class="button" type="submit"><i class="fa-solid fa-trash-can"></i></button>
+        </form>
+      </li>
     </ol>
   </div>
+    {% endfor %}
+  </section>
 
 </div>
 {% endblock %}

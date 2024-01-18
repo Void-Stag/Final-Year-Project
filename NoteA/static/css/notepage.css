@@ -3,13 +3,12 @@
 .main { grid-area: main; }
 .buttonmenu {grid-area: buttonmenu;}
 .headermenu {grid-area: headermenu;}
-.space {grid-area: space;}
+
 
 .grid-container {
   display: grid;
   grid-template-areas:
-    'header header header header headermenu'
-    'buttonmenu space space space space'
+    'buttonmenu header header header headermenu'
     'main main main main main'
     'main main main main main'
     'main main main main main';
@@ -17,19 +16,6 @@
   background-color: rgba(255, 255, 255, 0);
   padding: 5px;
 }
-
-.grid-container > div {
-  background-color: rgba(197, 72, 72, 0.8);
-  text-align: center;
-  padding: 20px 0;
-  font-size: 30px;
-}
-
-body{
-  background-color: #d2cdcd;
-  box-sizing: border-box;
-}
-
 
 /* Form Items */
 .title{
