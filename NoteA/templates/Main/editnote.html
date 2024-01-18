@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link href="static/css/notepage.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="grid-container">
+  <section class="header">
+  </section>
+
+  <section class="headermenu">
+    <form action="/AccountSettings">
+      <button class="button" type="submit">Account Settings <i class="fa-solid fa-user-gear"></i></button>
+    </form>
+  </section>
+
+  <section class="buttonmenu">
+    <form action="/home">
+      <button class="button" role="button">Back</button>
+    </form>
+  </section>
+
+  <section class="main">
+    <form action="/updatenote" method="POST">
+      <input type="text" name="title" class="title" required="required">
+      <br>
+      <textarea type="text" name="content" class="content" required="required" cols="70" rows="26">
+
+      </textarea>
+      <br>
+      <button type="submit" class="button">Save Changes</button>
+    </form>
+  </section>
+
+</div>
+{% endblock %}

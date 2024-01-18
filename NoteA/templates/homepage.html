@@ -9,21 +9,31 @@
   <section class="header">
   </section>
 
+  <section class="buttonmenu">
+    <div class="buttongroup">
+      <a class="button" href="{{ url_for('web.CreateNote')}}">New Note <i class="fa-solid fa-pen-to-square icon"></i></a>
+      <a class="button" href="{{ url_for('web.AccountSettings')}}"> Account Settings <i class="fa-solid fa-user-gear icon"></i></a>
+      <a class="button" href="{{ url_for('web.AccountSettings')}}"> Logout <i class="fa-solid fa-arrow-up-from-bracket icon"></i></a>
+    </div>
+  </section>
+
   <section class="todo">
     {% for task in tasks %}
-    <ol>
-      <li>
-        {{ task.taskname }}
-        <br>
-        {{ task.duedate }}
-      </li>
-      <li>
-        <form class="deletetask" action="/delete_task/{{task.id}}" method="post">
-          <button type="submit"><i class="fa-solid fa-trash-can"></i></button>
-        </form>
-      </li>
-      {% endfor %}
-    </ol>
+    <div class="task-element">
+      <ol>
+        <li>
+          {{ task.taskname }}
+          <br>
+          {{ task.duedate }}
+        </li>
+        <li>
+          <form class="deletetask" action="/delete_task/{{task.id}}" method="post">
+            <button class="button" type="submit"><i class="fa-solid fa-trash-can"></i></button>
+          </form>
+        </li>
+      </ol>
+    </div>
+    {% endfor %}
   </section>
 
   <section class="todoform">
@@ -32,23 +42,13 @@
       <br>
       <input type="datetime-local" name="duedate" placeholder="Due date DD/MM/YYYY" required="required">
       <br>
-      <button type="submit" class="addtask">Add To-Do Task</button>
+      <button type="submit" class="button">Add To-Do Task</button>
     </form>
   </section>
-
-  <section class="buttonmenu">
-    <form action="{{ url_for('web.CreateNote')}}">
-      <button class="addtask" role="button">New Note <i class="fa-solid fa-pen-to-square"></i></button>
-    </form>
-
-    <form action="{{ url_for('web.AccountSettings')}}" method="post">
-      <button class="addtask" type="submit">Account Settings <i class="fa-solid fa-user-gear"></i></button>
-    </form>
-  </section>
-
 
   <section class="note">
     {% for note in notes %}
+    <div class="note-element">
     <ol class="notes">
       <li class="notes">
         {{ note.title }}
@@ -64,11 +64,11 @@
     <ol class="notes">
       <li class="notes">
         <form class="deletenote" action="/delete_note/{{note.id}}" method="post">
-          <button type="submit"><i class="fa-solid fa-trash-can"></i></button>
+          <button class="button" type="submit"><i class="fa-solid fa-trash-can"></i></button>
         </form>
       </li>
     </ol>
-    <hr>
+  </div>
     {% endfor %}
     </ol>
   </section>

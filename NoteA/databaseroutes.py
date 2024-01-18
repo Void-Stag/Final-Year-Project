@@ -68,6 +68,8 @@ def login():
         return redirect('/home')
     return render_template('Login/login.html', title='Login', loginform=loginform)
 
+@data.route('/logout', methods=['GET','POST'])
+
 #Notes
 @data.route('/addnote', methods=['POST'])
 def addnote():

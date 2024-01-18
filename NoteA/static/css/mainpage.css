@@ -10,14 +10,14 @@
 .todo {
   grid-area: todo;
   min-height: 50vh;
-  max-height: 70vh;
+  max-height: 72vh;
   overflow: auto;
 }
 
 .note {
   grid-area: note;
   overflow: auto;/*Adds scrollbars to element when the content no longer fits*/
-  height: 75vh;/* Specifies height of element*/
+  height: 83vh;/* Specifies height of element*/
 }
 
 .todoform {
@@ -28,7 +28,7 @@
 .grid-container {
   display: grid;
   grid-template-areas:
-    'todo header header header buttonmenu buttonmenu'
+    'todo header header buttonmenu buttonmenu buttonmenu'
     'todo note note note note note'
     'todo note note note note note'
     'todoform note note note note note';
@@ -37,25 +37,11 @@
   padding: 5px;
 }
 
-/* .grid-container> section {
-  background-color: beige;
-  text-align: center;
-  padding: 20px 0;
-  font-size: 30px;
-  border-radius: 10px;
-} */
-
-body {
-  background-color: rgba(52, 92, 52);
-  box-sizing: border-box;
-}
-
-
 /* Form Items */
 input[type=text],
 input[type=datetime-local] {
   padding: 10px;
-  width: 50%;
+  width: 75%;
   margin: 10px 0;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
 }
@@ -67,6 +53,7 @@ input[type=datetime-local] {
 
 a {
   padding-left: 10px;
+  font-family: monospace;
 }
 
 ol.notes {
@@ -98,11 +85,6 @@ li.notes {
   display: inline;
 }
 
-hr {
-  border-style: dashed black;
-
-}
-
 .deletenote {
   padding: 15px;
 }
@@ -110,4 +92,20 @@ hr {
 .deletetask {
   padding-left: 10px;
   padding: 15px;
+}
+
+.note-element{
+  background-color: whitesmoke;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: auto;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.task-element{
+  background-color: whitesmoke;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: auto;
+  margin: 5px;
+  border-radius: 10px;
 }
