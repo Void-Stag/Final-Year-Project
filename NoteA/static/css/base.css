@@ -66,10 +66,12 @@ body{
     color: black;
     text-align: center;
     padding: 14px;
+    margin-left: 25%;
     text-decoration: none;
     font-size: 17px;
     border-radius: 5px;
 }
+
 
 i.icon{
     padding-left: 10px;
