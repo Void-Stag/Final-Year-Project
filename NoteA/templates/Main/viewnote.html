@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
 {% block styles %}
-<link href="static/css/notepage.css" rel="stylesheet">
+<link href="{{url_for('static', filename='notepage.css')}}" rel="stylesheet">
+<link href="{{url_for('static', filename='base.css')}}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -10,26 +11,35 @@
   </section>
 
   <section class="headermenu">
-    <form action="/AccountSettings">
+    <form action="/Account_Settings">
       <button class="button" type="submit">Account Settings <i class="fa-solid fa-user-gear"></i></button>
     </form>
   </section>
 
   <section class="buttonmenu">
-    <form action="/home">
+    <form action="/Home">
       <button class="button" role="button">Back</button>
     </form>
   </section>
 
   <section class="main">
-    <form action="/addnote" method="POST">
-      <input type="text" name="title" class="title" placeholder="Title.." required="required">
-      <br>
-      <textarea type="text" name="content" class="content" placeholder="Type here..." required="required" cols="70"
-        rows="26"></textarea>
-      <br>
-      <button type="submit" class="button">Create Note</button>
-    </form>
+
+      {{ note.id }}
+      {{ note.title }}
+      {{ note.content }}
+
+    <div class="note-element">
+
+      <div class="notebuttongroup">
+        <form class="editnote" action="/Edit_Note/{{note.id}}" method="post">
+          <button class="button" type="submit"><i class="fa-solid fa-pencil"></i></button>
+        </form>
+
+        <form class="deletenote" action="/Delete_Note/{{note.id}}" method="post">
+          <button class="button" type="submit"><i class="fa-solid fa-trash-can"></i></button>
+        </form>
+      </div>
+    </div>
   </section>
 
 </div>

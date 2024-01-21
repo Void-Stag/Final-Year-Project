@@ -6,16 +6,14 @@
 
 {% block content %}
 <div class="grid-container">
-  <!-- <section class="header">
-  </section> -->
 
   <section class="buttonmenu">
     <div class="buttongroup">
-      <a class="button" href="{{ url_for('web.CreateNote')}}">New Note <i
+      <a class="button" href="{{ url_for('web.Create_Note')}}">New Note <i
           class="fa-solid fa-pen-to-square icon"></i></a>
-      <a class="button" href="{{ url_for('web.AccountSettings')}}"> Account Settings <i
+      <a class="button" href="{{ url_for('web.Account_Settings')}}"> Account Settings <i
           class="fa-solid fa-user-gear icon"></i></a>
-      <a class="button" href="{{ url_for('data.logout')}}"> Logout <i
+      <a class="button" href="{{ url_for('data.Logout')}}"> Logout <i
           class="fa-solid fa-right-from-bracket icon"></i></a>
     </div>
   </section>
@@ -30,7 +28,7 @@
           {{ task.duedate }}
         </li>
         <li>
-          <form class="deletetask" action="/delete_task/{{task.id}}" method="post">
+          <form class="deletetask" action="/Delete_Task/{{task.id}}" method="post">
             <button class="button" type="submit"><i class="fa-solid fa-trash-can"></i></button>
           </form>
         </li>
@@ -40,7 +38,7 @@
   </section>
 
   <section class="todoform">
-    <form action="/addtask" method="POST">
+    <form action="/Add_Task" method="POST">
       <input type="text" name="taskname" placeholder="To-Do Task Name" required="required">
       <br>
       <input type="datetime-local" name="duedate" placeholder="Due date DD/MM/YYYY" required="required">
@@ -54,7 +52,7 @@
     <div class="note-element">
       <ol class="notes">
         <li class="notes">
-          {{ note.title }}
+          <a href="/View_Note/{{note.id}}">{{ note.title }}</a>
           <br>
           {{ note.content }}
         </li>
@@ -65,11 +63,11 @@
         </li>
       </ol>
       <div class="notebuttongroup">
-        <form class="editnote" action="/edit_note/{{note.id}}" method="post">
+        <form class="editnote" action="/Edit_Note/{{note.id}}" method="post">
           <button class="button" type="submit"><i class="fa-solid fa-pencil"></i></button>
         </form>
 
-        <form class="deletenote" action="/delete_note/{{note.id}}" method="post">
+        <form class="deletenote" action="/Delete_Note/{{note.id}}" method="post">
           <button class="button" type="submit"><i class="fa-solid fa-trash-can"></i></button>
         </form>
       </div>
