@@ -126,9 +126,8 @@ def Update_Note():
     content = request.form.get('content')
     #print(f"addnote {title} {content}")
     if title!= '' and content !='' !=None:
-        n= Note.query.filter(Note.id == id).one()
+        n = Note.query.filter(Note.id == id).one()
         n = Note(title=title, content=content)
         db.session.add(n)
         db.session.commit()
-        flash('Note Created!', 'success')
     return redirect('/Home')

@@ -1,8 +1,4 @@
 /* Grid Placement*/
-/* .header {
-  grid-area: header;
-} */
-
 .buttonmenu {
   grid-area: buttonmenu;
 }
@@ -53,8 +49,13 @@ input[type=datetime-local] {
 }
 
 a {
-  padding-left: 10px;
+  position: relative;
+  left: 10px;
+  /* padding-left: 10px; */
   font-family: monospace;
+  font-weight: bold;
+  font-size: 24pt;
+  text-decoration: none;
 }
 
 ol.notes {
@@ -69,22 +70,28 @@ ol {
   margin: 0;
 }
 
-
-li {
+li.tasks {
   font-size: 16px;
   font-family: monospace;
   list-style: none;
   display: inline;
 }
 
-
+li.notetitle {
+  font-family: monospace;
+  list-style: none;
+/*   display: inline; */
+position: relative;
+left: 10px;
+}
 
 li.notes {
   font-size: 16px;
   font-family: monospace;
   list-style: none;
-  display: inline;
+  display: none;
 }
+
 
 .deletenote,editnote {
   padding: 15px;
@@ -105,21 +112,6 @@ li.notes {
   width: auto;
   margin: 5px;
   border-radius: 10px;
-}
-
-.notebuttongroup{
-  display: inline-block;
-  color: black;
-  text-align: center;
-  padding: 14px;
-  margin-left: 0;
-  margin-right: auto;
-  text-decoration: none;
-  font-size: 17px;
-  border-radius: 5px;
-   position: absolute;
-   right: 15px;
-   top: 15px;
 }
 
 .task-element{

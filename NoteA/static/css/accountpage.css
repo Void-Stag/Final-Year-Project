@@ -40,3 +40,12 @@ p {
   font-family: monospace;
   padding: 2px;
 }
+
+/* Form Items */
+input[type=text]{
+  padding: 10px;
+  width: 50%;
+  margin: 10px;
+  font-size: 16px;
+  font-family: monospace;
+}

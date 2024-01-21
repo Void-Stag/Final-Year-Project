@@ -24,12 +24,15 @@
 
   <section class="main">
 
-      {{ note.id }}
-      {{ note.title }}
-      {{ note.content }}
+    <form action="/Add_Note" method="POST">
+      <input type="text" name="title" class="title" value="{{ note.title }}" required="required" readonly>
+      <br>
+      <textarea type="text" name="content" class="content" placeholder="Type here..." required="required" cols="70" rows="26" readonly>
+        {{ note.content }}
+      </textarea>
+    </form>
 
     <div class="note-element">
-
       <div class="notebuttongroup">
         <form class="editnote" action="/Edit_Note/{{note.id}}" method="post">
           <button class="button" type="submit"><i class="fa-solid fa-pencil"></i></button>
