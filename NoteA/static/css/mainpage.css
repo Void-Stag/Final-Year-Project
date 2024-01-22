@@ -75,16 +75,22 @@ ol {
 /* List Items */
 li{
   list-style: none;
+  font-family: monospace;
 }
 
 li.tasks {
   font-size: 16px;
-  font-family: monospace;
+  padding-right: 20px;
+  padding-left: 10px;
   display: inline;
+}
+li.task-button {
+
+  display: inline;
+  padding-left: 20px;
 }
 
 li.notetitle {
-  font-family: monospace;
   font-size: 18px;
   font-weight: bold;
   display:inline-block;
@@ -94,10 +100,8 @@ li.notetitle {
 
 li.notes {
   font-size: 16px;
-  font-family: monospace;
   padding-right: 100px;
-  position: relative;
-  left: auto;
+  padding-top: 10px;
   width: 500px;
 }
 
