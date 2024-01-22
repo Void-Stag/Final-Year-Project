@@ -27,7 +27,7 @@
     <form action="/Add_Note" method="POST">
       <input type="text" name="title" class="title" value="{{ note.title }}" required="required" readonly>
       <br>
-      <textarea type="text" name="content" class="content" placeholder="Type here..." required="required" cols="70" rows="26" readonly>
+      <textarea type="text" name="content" class="content" required="required" cols="70" rows="26" readonly>
         {{ note.content }}
       </textarea>
     </form>
