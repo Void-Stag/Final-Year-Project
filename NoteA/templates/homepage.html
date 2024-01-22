@@ -27,6 +27,7 @@
           <p class="hspacer"></p>
           {{ task.duedate }}
         </li>
+
         <li class="tasks">
           <form class="deletetask" action="/Delete_Task/{{task.id}}" method="post">
             <button class="button" type="submit"><i class="fa-solid fa-trash-can"></i></button>
@@ -59,20 +60,23 @@
           {{ note.content }}
         </li>
       </ol>
-      <ol class="notes">
-        <li class="notes">
+
+      <ol class="created-time">
+        <li>
           {{ note.created_at }}
         </li>
+        <br>
       </ol>
-      <div class="notebuttongroup">
-        <form class="editnote" action="/Edit_Note/{{note.id}}" method="post">
+
+      <ol class="buttons">
+        <form class="edit-note" action="/Edit_Note/{{note.id}}" method="post">
           <button class="button" type="submit"><i class="fa-solid fa-pencil"></i></button>
         </form>
 
-        <form class="deletenote" action="/Delete_Note/{{note.id}}" method="post">
+        <form class="delete-note" action="/Delete_Note/{{note.id}}" method="post">
           <button class="button" type="submit"><i class="fa-solid fa-trash-can"></i></button>
         </form>
-      </div>
+      </ol>
     </div>
     {% endfor %}
   </section>
