@@ -1,8 +1,16 @@
 /* Grid Placement*/
-.header { grid-area: header; }
-.main { grid-area: main; }
-.buttonmenu {grid-area: buttonmenu;}
-.headermenu {grid-area: headermenu;}
+.header {
+  grid-area: header;
+}
+.main {
+  grid-area: main;
+}
+.buttonmenu {
+  grid-area: buttonmenu;
+}
+.headermenu {
+  grid-area: headermenu;
+}
 
 
 .grid-container {
@@ -48,7 +56,13 @@ a{
   padding-left: 10px;
 }
 
-hr{
-  border-style: dashed black;
 
+/* Element Backgrounds */
+.note-element{
+  background-color: whitesmoke;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 75%;
+  margin: 30px;
+  border-radius: 10px;
+  box-sizing: border-box;
 }

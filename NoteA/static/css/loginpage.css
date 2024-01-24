@@ -1,27 +1,28 @@
 /* Grid Placement*/
 .loginspace {
     grid-area: login;
-    justify-items: center;
-    align-items: center;
+    box-sizing: border-box;
     max-width: 50%;
-    margin-top: 5%;
+    margin: 5%;
 }
 
 .backleft {
     grid-area: backl;
+    overflow: none;
 }
 
 .backright {
     grid-area: backr;
+    overflow: none;
 }
 
 
 .grid-container {
     display: grid;
     grid-template-areas:
-        'backleft backleft back back backright backright'
-        'backleft backleft login login backright backright'
-        'backleft backleft back back backright backright';
+        'backl backl back back backr backr'
+        'backl backl login login backr backr'
+        'backl backl back back backr backr';
     gap: 10px;
     background-color: rgba(255, 255, 255, 0);
     padding: 10px;

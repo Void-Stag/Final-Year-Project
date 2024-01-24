@@ -2,7 +2,7 @@
 
 {% block styles %}
 <link href="{{url_for('static', filename='notepage.css')}}" rel="stylesheet">
-<link href="{{url_for('static', filename='base.css')}}" rel="stylesheet">
+<link href="{{url_for('static', filename='note-base.css')}}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -24,9 +24,9 @@
 
   <section class="main">
     <form action="/Update_Note" method="POST">
-      <input type="text" name="title" class="title" value="{{ note.title }}" required="required">
+      <input type="text" aria-label="Edit Note Title" name="title" class="title" value="{{ note.title }}" required="required">
       <br>
-      <textarea type="text" name="content" class="content" required="required" cols="70"
+      <textarea type="text" aria-label="Edit Note Contents" name="content" class="content" required="required" cols="70"
         rows="26">{{ note.content }}</textarea>
       <br>
       <button type="submit" class="button">Save Changes</button>

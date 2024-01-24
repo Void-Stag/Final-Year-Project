@@ -8,21 +8,29 @@
 
     <section class="setting">
         <form action="{{ url_for('web.Home')}}">
-            <button class="button" type=submit class="login">Back</button>
+            <button class="button" type=submit>Back</button>
         </form>
         <hr>
-        <p>Change Password:</p>
+        <h4>Change Password:</h4>
         <!-- <br> -->
         <form action="" method="">
             <input type="text" placeholder="Current Password" required="required" aria-label="Current Password input box">
             <input type="text" placeholder="New Password" required="required" aria-label="New Password input box">
-
-
+            <br>
             <button class="button" type="submit">Change Password</button>
         </form>
         <hr>
-        <p> Delete Data</p>
-
+        <h4> Delete Data</h4>
+        <p>
+            <bold>Warning!</bold>
+            This is an Irreversible action!
+        </p>
+        <p>
+            All Notes and To-Do Tasks will be deleted and non-recovereable.
+        </p>
+        <form action="" method="">
+            <button class="button" type="submit">Delete Data</button>
+        </form>
 
     </section>
 

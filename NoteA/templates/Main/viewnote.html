@@ -2,7 +2,7 @@
 
 {% block styles %}
 <link href="{{url_for('static', filename='notepage.css')}}" rel="stylesheet">
-<link href="{{url_for('static', filename='base.css')}}" rel="stylesheet">
+<link href="{{url_for('static', filename='note-base.css')}}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -23,27 +23,24 @@
   </section>
 
   <section class="main">
-
-    <form action="/Add_Note" method="POST">
-      <input type="text" name="title" class="title" value="{{ note.title }}" required="required" readonly>
-      <br>
-      <textarea type="text" name="content" class="content" required="required" cols="70" rows="26" readonly>
+    <div class="note-element">
+      <h4>{{ note.title }}</h4>
+      <form action="/Add_Note" method="POST">
+        <input type="text" name="title" class="title" value="{{ note.title }}" required="required" readonly>
+        <br>
+        <textarea type="text" name="content" class="content" required="required" cols="70" rows="26" readonly>
         {{ note.content }}
       </textarea>
-    </form>
+      </form>
 
-    <div class="note-element">
-      <div class="notebuttongroup">
-        <form class="editnote" action="/Edit_Note/{{note.id}}" method="post">
-          <button class="button" type="submit"><i class="fa-solid fa-pencil"></i></button>
-        </form>
+      <form class="editnote" action="/Edit_Note/{{note.id}}" method="post">
+        <button class="button" type="submit"><i class="fa-solid fa-pencil"></i></button>
+      </form>
 
-        <form class="deletenote" action="/Delete_Note/{{note.id}}" method="post">
-          <button class="button" type="submit"><i class="fa-solid fa-trash-can"></i></button>
-        </form>
-      </div>
+      <form class="deletenote" action="/Delete_Note/{{note.id}}" method="post">
+        <button class="button" type="submit"><i class="fa-solid fa-trash-can"></i></button>
+      </form>
     </div>
   </section>
-
 </div>
 {% endblock %}

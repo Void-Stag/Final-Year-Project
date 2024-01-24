@@ -3,6 +3,8 @@
   grid-area: login;
   justify-items: center;
   align-items: center;
+  max-width: 50%;
+  margin-top: 5%;
 }
 
 .backleft {
@@ -12,7 +14,6 @@
 .backright {
   grid-area: backright;
 }
-
 
 .grid-container {
   display: grid;
@@ -25,18 +26,21 @@
   padding: 10px;
 }
 
-.login {
+.button {
   padding: 10px;
   width: 50%;
   margin-bottom: 10px;
 }
 
-hr {
-  width: 75%;
+
+h4 {
+  font-size: 17px;
+  font-family: monospace;
+  padding: 2px;
 }
 
-p {
-  font-size: 17px;
+p{
+  font-size: 15px;
   font-family: monospace;
   padding: 2px;
 }
