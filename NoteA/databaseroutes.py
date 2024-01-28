@@ -10,7 +10,7 @@ data = Blueprint('data', __name__, template_folder='templates')
 
 
 #ToDo Tasks
-@data.route('/addtask', methods=['POST'])
+@data.route('/Add_Task', methods=['POST'])
 def addtask():
     taskname = request.form.get('taskname')
     duedate = datetime.fromisoformat(request.form.get('duedate'))
@@ -19,9 +19,9 @@ def addtask():
         db.session.add(t)
         db.session.commit()
 
-    return redirect('/home')
+    return redirect('/Home')
 
-@data.route('/delete_task/<int:id>', methods=['GET', 'POST'])
+@data.route('/Delete_Task/<int:id>', methods=['GET', 'POST'])
 def delete_task(id):
     if id:
         try:
@@ -29,10 +29,10 @@ def delete_task(id):
             db.session.commit()
         except Exception as error:
             print(f"delete_task [{id}] Fail {error}")
-    return redirect('/home')
+    return redirect('/Home')
 
 #User Account & Login
-@data.route('/CreateAccount', methods=['GET', 'POST'])
+@data.route('/Create_Account', methods=['GET', 'POST'])
 def CreateAccountRoot():
     accform = CreateAccount()
     if accform.validate_on_submit():
@@ -46,13 +46,13 @@ def CreateAccountRoot():
         db.session.add(user)
         db.session.commit()
         flash('Account Created!', 'success')
-        return redirect('/login')
+        return redirect('/Login')
     return render_template('Login/createacc.html', title='Create Account', accform=accform)
 
 #Login and User Account Authentication
 @data.route('/')
-@data.route('/login', methods=['GET', 'POST'])
-def login():
+@data.route('/Login', methods=['GET', 'POST'])
+def Login():
     loginform = UserLogin()
     if loginform.validate_on_submit():
         print(f"login user 1")
@@ -65,18 +65,18 @@ def login():
         if user:
             print(f"login user 3")
             flash("You are now signed in!", "success")
-        return redirect('/home')
+        return redirect('/Home')
     return render_template('Login/login.html', title='Login', loginform=loginform)
 
-@data.route('/logout', methods=['GET','POST'])
-def logout():
+@data.route('/Logout', methods=['GET','POST'])
+def Logout():
     logout_user()
     flash("You've signed out!", "success")
     return redirect('/login')
 
-#Notes
-@data.route('/addnote', methods=['POST'])
-def addnote():
+#Note Functions
+@data.route('/Add_Note', methods=['POST'])
+def Add_Note():
     title = request.form.get('title')
     content = request.form.get('content')
     #print(f"addnote {title} {content}")
@@ -86,14 +86,57 @@ def addnote():
         db.session.commit()
         flash('Note Created!', 'success')
 
-    return redirect('/home')
+    return redirect('/Home')
 
-@data.route('/delete_note/<int:id>', methods=['GET', 'POST'])
-def delete_note(id):
+@data.route('/Delete_Note/<int:id>', methods=['GET', 'POST'])
+def Delete_Note(id):
     if id:
         try:
             Note.query.filter(Note.id == id).delete()
             db.session.commit()
         except Exception as error:
-            print(f"delete_note [{id}] Fail {error}")
-    return redirect('/home')
+         print(f"delete_note [{id}] Fail {error}")
+    return redirect('/Home')
+
+@data.route('/View_Note/<int:id>', methods= ['GET', 'POST'])
+def View_Note(id):
+    note = None
+    if id:
+        try:
+            note = Note.query.filter(Note.id == id).one()
+            """ Adjust_Note_Dates(note) """
+        except Exception as error:
+            print(f"view_note [{id}] Fail {error}")
+        """ Suggestion to redirect to an error page """
+    return render_template('/Main/viewnote.html', title='View Note', note=note)
+
+@data.route('/Edit_Note/<int:id>', methods= ['GET', 'POST'])
+def Edit_Note(id):
+    note = None
+    if id:
+        try:
+            note = Note.query.filter(Note.id == id).one()
+        except Exception as error:
+            print(f"view_note [{id}] Fail {error}")
+    print(f"view_note [{id}] [{note}]")
+    return render_template('/Main/editnote.html', title='Edit Note', note=note)
+
+@data.route('/Update_Note/<int:id>', methods=['GET','POST'])
+def Update_Note(id):
+    print(f"update_note 1 id = [{id}]")
+    note = Note.query.filter(Note.id == id).one()
+    print(f"update_note 2 id = [{id}]")
+    if note:
+        print(f"update_note 3 id = [{id}]")
+        try:
+            print(f"update_note 4 id = [{id}]")
+            title = request.form.get('title')
+            content = request.form.get('content')
+            print(f"update_note 5 [{title}] [{content}]")
+            note.title = title
+            note.content = content
+            print(f"update_note 6 id = [{id}]")
+            db.session.commit()
+            return render_template('/Main/viewnote.html', title='View Note', note=note)
+        except Exception as error:
+            print(f"update_note [{id}] Fail [{error}]")

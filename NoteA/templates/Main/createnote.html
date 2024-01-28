@@ -1,28 +1,25 @@
 {% extends "base.html" %}
 
 {% block styles %}
-<link href="static/css/notepage.css" rel="stylesheet">
+<link href="static/notepage.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
 <div class="grid-container">
   <section class="header">
-  </section>
-
-  <section class="headermenu">
-    <form action="/AccountSettings">
+    <form action="/Account_Settings">
       <button class="button" type="submit">Account Settings <i class="fa-solid fa-user-gear"></i></button>
     </form>
   </section>
 
   <section class="buttonmenu">
-    <form action="/home">
+    <form action="/Home">
       <button class="button" role="button">Back</button>
     </form>
   </section>
 
   <section class="main">
-    <form action="/addnote" method="POST">
+    <form action="/Add_Note" method="POST">
       <input type="text" name="title" class="title" placeholder="Title.." required="required">
       <br>
       <textarea type="text" name="content" class="content" placeholder="Type here..." required="required" cols="70"

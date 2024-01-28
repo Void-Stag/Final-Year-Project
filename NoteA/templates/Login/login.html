@@ -17,16 +17,24 @@
             servers required.
         </p>
         <section>
-            <form action="/login" method="POST" aria-label="Login Form">
+            <form action="/Login" method="POST" aria-label="Login Form">
                 {{ loginform.hidden_tag() }}
+                <label type="hidden_tag" aria-label="Username input below"></label>
                 {{ wtfx.form_field(loginform.Username, id='font', placeholder="Username") }}
+                <label type="hidden_tag" aria-label="Password input below"></label>
                 {{ wtfx.form_field(loginform.Password, id='font', placeholder="Password") }}
-                {{ wtfx.form_field(loginform.Login) }}
+                <label type="hidden_tag" aria-label="Submit button below"></label>
+                {{ wtfx.form_field(loginform.Login, class='button') }}
             </form>
-            <hr>
-            <form action="{{ url_for('data.CreateAccountRoot')}}">
-                <button type=submit class="login">Create Account</button>
-            </form>
+
+            {% if loginform.Username == false %}
+                <hr>
+                <form action="{{ url_for('data.CreateAccountRoot')}}">
+                    <button type=submit aria-label="Create Account button" class="button">Create Account</button>
+                </form>
+            {% else %}
+                <!-- Displays no button -->
+            {% endif %}
         </section>
     </section>
 </div>

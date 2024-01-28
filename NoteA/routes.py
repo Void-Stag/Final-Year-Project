@@ -4,16 +4,17 @@ from models import Task, Note
 web = Blueprint('web', __name__, template_folder='templates')
 
 
-@web.route('/home', methods=['GET','POST'])
+@web.route('/Home', methods=['GET','POST'])
 def Home():
     tasks = Task.query.all()
     notes = Note.query.all()
+
     return render_template('homepage.html', title='Home' ,tasks=tasks, notes=notes)
 
-@web.route('/AccountSettings', methods=['GET', 'POST'])
-def AccountSettings():
+@web.route('/Account_Settings', methods=['GET', 'POST'])
+def Account_Settings():
     return render_template('Account/settings.html', title='Settings')
 
-@web.route('/CreateNote', methods=['GET', 'POST'])
-def CreateNote():
+@web.route('/Create_Note', methods=['GET', 'POST'])
+def Create_Note():
     return render_template('Main/createnote.html', title='Create Note')

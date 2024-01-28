@@ -1,34 +1,30 @@
 /* Grid Placement*/
-.header {
-  grid-area: header;
-}
-
-.buttonmenu {
-  grid-area: buttonmenu;
+.menu {
+  grid-area: menu;
 }
 
 .todo {
   grid-area: todo;
-  min-height: 50vh;
-  max-height: 72vh;
+  min-height: 31.25em;
+  max-height: 45em;
   overflow: auto;
 }
 
 .note {
   grid-area: note;
   overflow: auto;/*Adds scrollbars to element when the content no longer fits*/
-  height: 83vh;/* Specifies height of element*/
+  height: 42em;/* Specifies height of element*/
+  /* position: relative; */
 }
 
 .todoform {
   grid-area: todoform;
 }
 
-
 .grid-container {
   display: grid;
   grid-template-areas:
-    'todo header header buttonmenu buttonmenu buttonmenu'
+    'todo menu menu menu menu menu'
     'todo note note note note note'
     'todo note note note note note'
     'todoform note note note note note';
@@ -46,47 +42,72 @@ input[type=datetime-local] {
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
 }
 
-.addtask {
-  padding: 10px;
-  width: 50%;
+/* Hyperlinks */
+a {
+  text-decoration: none;
 }
 
-a {
-  padding-left: 10px;
-  font-family: monospace;
+/* Orderd List */
+ol {
+  display: flex;
+  padding: 20px;
+  margin: 0;
 }
 
 ol.notes {
   display: inline-block;
-  overflow: auto;
+  width: 500px;
+  text-align: left;
+}
+.buttons {
+  display: inline-flex;
+  width: fit-content;
+  text-align: left;
 }
 
-ol {
-  overflow: auto;
-  display: flex;
-  padding: 30px;
-  margin: 0;
-}
-
-
-li {
-  font-size: 16px;
+.created-time{
+  display: inline-flex;
   font-family: monospace;
-  list-style: none;
-  display: inline;
+  font-size: 16px;
+  text-align: center;
 }
 
+/* List Items */
+li{
+  list-style: none;
+  font-family: monospace;
+}
 
+li.tasks {
+  font-size: 16px;
+  padding-right: 20px;
+  padding-left: 10px;
+  display: list-item;
+}
+li.task-button {
+  display: list-item;
+  padding-left: 20px;
+}
+
+li.notetitle {
+  font-size: 18px;
+  font-weight: bold;
+  display:inline-block;
+  padding-right: 20px;
+  padding-bottom: 2vw;
+}
 
 li.notes {
   font-size: 16px;
-  font-family: monospace;
-  list-style: none;
-  display: inline;
+  padding-right: 100px;
+  padding-top: 10px;
+  width: 500px;
 }
 
-.deletenote,editnote {
+/* Page-Specific Buttons */
+.delete-note, .edit-note {
   padding: 15px;
+  width: 49px;
 }
 
 .deletetask {
@@ -94,15 +115,23 @@ li.notes {
   padding: 15px;
 }
 
+.addtask {
+  padding: 10px;
+  width: 50%;
+}
+
 .hspacer{
   padding-top: 1px;
   padding-bottom: 1px;
 }
+
+/* Element Backgrounds */
 .note-element{
   background-color: whitesmoke;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: auto;
   margin: 5px;
+  padding: 5px;
   border-radius: 10px;
 }
 
@@ -112,4 +141,9 @@ li.notes {
   width: auto;
   margin: 5px;
   border-radius: 10px;
+}
+
+/* Headings */
+h5{
+  font-family: monospace;
 }
