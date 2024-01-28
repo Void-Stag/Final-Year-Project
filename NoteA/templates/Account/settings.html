@@ -1,21 +1,27 @@
 {% extends "base.html" %}
 {% block styles %}
 <link href="static/css/accountpage.css" rel="stylesheet">
+<link href="static/media/loginmedia.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
 <div class="grid-container">
 
     <section class="setting">
-        <form action="{{ url_for('web.Home')}}">
-            <button class="button" type=submit>Back</button>
-        </form>
+        <div class="button-menu-left">
+            <form action="{{ url_for('web.Home')}}">
+                <button class="button" type=submit>Back</button>
+            </form>
+        </div>
         <hr>
         <h4>Change Password:</h4>
         <!-- <br> -->
         <form action="" method="">
-            <input type="text" placeholder="Current Password" required="required" aria-label="Current Password input box">
+            <input type="text" placeholder="Current Password" required="required"
+                aria-label="Current Password input box">
             <input type="text" placeholder="New Password" required="required" aria-label="New Password input box">
+            <input type="text" placeholder="Retype New Password" required="required"
+                aria-label="Retype New Password input box">
             <br>
             <button class="button" type="submit">Change Password</button>
         </form>

@@ -11,8 +11,6 @@ body{
   box-sizing: border-box;
 }
 
-
-
 /* Button CSS */
 .button {
   align-items: center;
@@ -63,7 +61,6 @@ body{
 .buttongroup{
   display: inline-block;
   color: black;
-  text-align: center;
   padding: 14px;
   margin-left: 25%;
   text-decoration: none;
@@ -81,5 +78,5 @@ hr {
   height: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  width: 75%;
+  width: 85%;
 }

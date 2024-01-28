@@ -1,19 +1,19 @@
 /* Grid Placement*/
-.buttonmenu {
-  grid-area: buttonmenu;
+.menu {
+  grid-area: menu;
 }
 
 .todo {
   grid-area: todo;
-  min-height: 50vh;
-  max-height: 72vh;
+  min-height: 31.25em;
+  max-height: 45em;
   overflow: auto;
 }
 
 .note {
   grid-area: note;
   overflow: auto;/*Adds scrollbars to element when the content no longer fits*/
-  height: 83vh;/* Specifies height of element*/
+  height: 42em;/* Specifies height of element*/
   /* position: relative; */
 }
 
@@ -24,7 +24,7 @@
 .grid-container {
   display: grid;
   grid-template-areas:
-    'todo buttonmenu buttonmenu buttonmenu buttonmenu buttonmenu'
+    'todo menu menu menu menu menu'
     'todo note note note note note'
     'todo note note note note note'
     'todoform note note note note note';
@@ -54,19 +54,19 @@ ol {
   margin: 0;
 }
 
-.notes {
+ol.notes {
   display: inline-block;
   width: 500px;
   text-align: left;
 }
 .buttons {
-  display: inline-block;
+  display: inline-flex;
   width: fit-content;
   text-align: left;
 }
 
 .created-time{
-  display: inline-block;
+  display: inline-flex;
   font-family: monospace;
   font-size: 16px;
   text-align: center;
@@ -82,10 +82,10 @@ li.tasks {
   font-size: 16px;
   padding-right: 20px;
   padding-left: 10px;
-  display: inline;
+  display: list-item;
 }
 li.task-button {
-  display: inline;
+  display: list-item;
   padding-left: 20px;
 }
 
@@ -141,4 +141,9 @@ li.notes {
   width: auto;
   margin: 5px;
   border-radius: 10px;
+}
+
+/* Headings */
+h5{
+  font-family: monospace;
 }

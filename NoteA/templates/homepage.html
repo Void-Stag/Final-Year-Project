@@ -2,12 +2,12 @@
 
 {% block styles %}
 <link href="static/css/mainpage.css" rel="stylesheet">
+<link href="static/media/mainpagemedia.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
 <div class="grid-container">
-
-  <section class="buttonmenu">
+  <section class="menu">
     <div class="buttongroup">
       <a class="button" href="{{ url_for('web.Create_Note')}}">New Note <i
           class="fa-solid fa-pen-to-square icon"></i></a>
@@ -24,12 +24,12 @@
       <ol>
         <li class="tasks">
           {{ task.taskname }}
-          <p class="hspacer"></p>
-          {{ task.duedate }}
+          <p></p>
+          {{ task.duedate.strftime('%d-%m-%Y %H:%M:%S') }}
         </li>
 
         <li class="task-button">
-          <form class="deletetask" action="/Delete_Task/{{task.id}}" method="post">
+          <form class="deletetask" action="/Delete_Task/{{task.id}}" method="POST">
             <button class="button" type="submit"><i class="fa-solid fa-trash-can"></i></button>
           </form>
         </li>
@@ -63,17 +63,18 @@
 
       <ol class="created-time">
         <li>
-          {{ note.created_at }}
+          {{ note.created_at.strftime('%d-%m-%Y %H:%M:%S') }}
         </li>
         <br>
       </ol>
 
       <ol class="buttons">
-        <form class="edit-note" action="/Edit_Note/{{note.id}}" method="post">
+        <form class="edit-note" action="/Edit_Note/{{note.id}}" method="POST" aria-label="Edit Note Button Container">
           <button class="button" type="submit"><i class="fa-solid fa-pencil"></i></button>
         </form>
 
-        <form class="delete-note" action="/Delete_Note/{{note.id}}" method="post">
+        <form class="delete-note" action="/Delete_Note/{{note.id}}" method="POST"
+          aria-label="Delete Note Button Container">
           <button class="button" type="submit"><i class="fa-solid fa-trash-can"></i></button>
         </form>
       </ol>

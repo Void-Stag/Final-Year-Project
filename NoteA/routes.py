@@ -8,6 +8,7 @@ web = Blueprint('web', __name__, template_folder='templates')
 def Home():
     tasks = Task.query.all()
     notes = Note.query.all()
+
     return render_template('homepage.html', title='Home' ,tasks=tasks, notes=notes)
 
 @web.route('/Account_Settings', methods=['GET', 'POST'])

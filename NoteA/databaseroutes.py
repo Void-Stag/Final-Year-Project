@@ -74,7 +74,7 @@ def Logout():
     flash("You've signed out!", "success")
     return redirect('/login')
 
-#Notes
+#Note Functions
 @data.route('/Add_Note', methods=['POST'])
 def Add_Note():
     title = request.form.get('title')
@@ -95,7 +95,7 @@ def Delete_Note(id):
             Note.query.filter(Note.id == id).delete()
             db.session.commit()
         except Exception as error:
-            print(f"delete_note [{id}] Fail {error}")
+         print(f"delete_note [{id}] Fail {error}")
     return redirect('/Home')
 
 @data.route('/View_Note/<int:id>', methods= ['GET', 'POST'])
@@ -104,9 +104,10 @@ def View_Note(id):
     if id:
         try:
             note = Note.query.filter(Note.id == id).one()
+            """ Adjust_Note_Dates(note) """
         except Exception as error:
             print(f"view_note [{id}] Fail {error}")
-    print(f"view_note [{id}] [{note}]")
+        """ Suggestion to redirect to an error page """
     return render_template('/Main/viewnote.html', title='View Note', note=note)
 
 @data.route('/Edit_Note/<int:id>', methods= ['GET', 'POST'])
@@ -120,14 +121,22 @@ def Edit_Note(id):
     print(f"view_note [{id}] [{note}]")
     return render_template('/Main/editnote.html', title='Edit Note', note=note)
 
-@data.route('/Update_Note', methods=['PUT'])
-def Update_Note():
-    title = request.form.get('title')
-    content = request.form.get('content')
-    #print(f"addnote {title} {content}")
-    if title!= '' and content !='' !=None:
-        n = Note.query.filter(Note.id == id).one()
-        n = Note(title=title, content=content)
-        db.session.add(n)
-        db.session.commit()
-    return redirect('/Home')
+@data.route('/Update_Note/<int:id>', methods=['GET','POST'])
+def Update_Note(id):
+    print(f"update_note 1 id = [{id}]")
+    note = Note.query.filter(Note.id == id).one()
+    print(f"update_note 2 id = [{id}]")
+    if note:
+        print(f"update_note 3 id = [{id}]")
+        try:
+            print(f"update_note 4 id = [{id}]")
+            title = request.form.get('title')
+            content = request.form.get('content')
+            print(f"update_note 5 [{title}] [{content}]")
+            note.title = title
+            note.content = content
+            print(f"update_note 6 id = [{id}]")
+            db.session.commit()
+            return render_template('/Main/viewnote.html', title='View Note', note=note)
+        except Exception as error:
+            print(f"update_note [{id}] Fail [{error}]")

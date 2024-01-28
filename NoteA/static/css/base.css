@@ -7,7 +7,7 @@ body{
   text-align: center;
   padding: 10px 0;
   /* font-size: 30px; */
-  border-radius: 10px;
+  border-radius: 0.625em;
   box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
   box-sizing: border-box;
   }

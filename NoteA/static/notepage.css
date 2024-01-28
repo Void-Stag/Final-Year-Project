@@ -1,22 +1,23 @@
 /* Grid Placement*/
 .header {
   grid-area: header;
+  align-items: right;
+  justify-items: right;
 }
+
 .main {
   grid-area: main;
 }
+
 .buttonmenu {
   grid-area: buttonmenu;
-}
-.headermenu {
-  grid-area: headermenu;
 }
 
 
 .grid-container {
   display: grid;
   grid-template-areas:
-    'buttonmenu header header header headermenu'
+    'buttonmenu header header header header'
     'main main main main main'
     'main main main main main'
     'main main main main main';
@@ -26,43 +27,80 @@
 }
 
 /* Form Items */
-.title{
+input.title {
   padding: 10px;
   width: 45%;
   margin: 10px 0;
-  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
   transition: width 0.4s ease-in-out;
   margin-right: 10%;
 }
 
-.title:focus {
+input.title:focus {
   width: 65%;
 }
 
-.content{
+textarea.content {
   padding: 10px;
   width: 75%;
   height: 85%;
   margin: 10px 0;
-  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
 }
 
-.button{
-  padding: 10px;
+.button {
   max-width: 50%;
 }
 
-a{
+a {
   padding-left: 10px;
 }
 
+.title {
+  padding-left: 5%;
+  padding-top: 3%;
+  text-align: left;
+  width: fit-content;
+}
+
+.date {
+  padding-top: 10px;
+  padding-right: 25px;
+  text-align: right;
+}
+
+.note-content {
+  padding: 5px;
+}
 
 /* Element Backgrounds */
-.note-element{
+.note-element {
   background-color: whitesmoke;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  width: 75%;
+  width: auto;
+  max-height: 100em;
   margin: 30px;
   border-radius: 10px;
   box-sizing: border-box;
+}
+
+h4 {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: monospace;
+  margin: 0;
+}
+
+h5 {
+  font-size: 18px;
+  font-family: monospace;
+  font-weight: lighter;
+  margin: 0;
+}
+
+p {
+  font-size: 19px;
+  font-family: monospace;
+  min-height: 25%;
+  max-height: 75%;
 }
