@@ -16,8 +16,5 @@ NoteA = Flask(__name__)
 NoteA.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///website.db'
 NoteA.config ['SECRET_KEY'] = NoteA_config['NoteA']['security']['key']
 
-
-
-
 db = SQLAlchemy(NoteA)
 migrate = Migrate(NoteA, db)
