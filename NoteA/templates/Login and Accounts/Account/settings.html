@@ -14,17 +14,17 @@
             </form>
         </div>
         <hr>
-        <h4>Change Password:</h4>
-        <!-- <br> -->
-        <form action="" method="">
-            <input type="text" placeholder="Current Password" required="required"
-                aria-label="Current Password input box">
-            <input type="text" placeholder="New Password" required="required" aria-label="New Password input box">
-            <input type="text" placeholder="Retype New Password" required="required"
-                aria-label="Retype New Password input box">
-            <br>
-            <button class="button" type="submit">Change Password</button>
-        </form>
+        <div class="password-form">
+            <h4>Change Password:</h4>
+            <form action="/Update_Password" method="POST">
+                <input type="text" placeholder="Current Password" required="required"
+                    aria-label="Current Password input box">
+                <input type="text" placeholder="New Password" required="required" aria-label="New Password input box">
+                <input type="text" placeholder="Retype New Password" required="required"
+                    aria-label="Retype New Password input box">
+                <button class="button" type="submit">Change Password</button>
+            </form>
+        </div>
         <hr>
         <h4> Delete Data</h4>
         <p>

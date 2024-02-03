@@ -78,6 +78,10 @@ def Logout():
     flash("You've signed out!", "success")
     return redirect('/Login')
 
+@data.route('/Update_Password', methods=['GET', 'POST'])
+def Update_Password():
+
+    return redirect('/Account_Settings')
 
 #Note Functions
 @data.route('/Add_Note', methods=['POST'])
