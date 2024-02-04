@@ -1,8 +1,8 @@
-from flask import Blueprint, redirect, request, render_template, flash, url_for
+from flask import Blueprint, redirect, request, render_template, flash, url_for, session
 from flask_login import login_user, logout_user, current_user, LoginManager
 from run import db
 from models import Task, User, Note
-from auth.forms import UserLogin, CreateAccount
+from auth.forms import UserLogin, CreateAccount, UserChangePassword
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -12,6 +12,9 @@ data = Blueprint('data', __name__, template_folder='templates')
 #ToDo Tasks
 @data.route('/Add_Task', methods=['POST'])
 def addtask():
+    id = session.get('user_id')
+    if id is None:
+        return redirect('/Login')
     taskname = request.form.get('taskname')
     duedate = datetime.fromisoformat(request.form.get('duedate'))
     if taskname!= '' and duedate !='' !=None:
@@ -21,15 +24,17 @@ def addtask():
 
     return redirect('/Home')
 
-
-@data.route('/Delete_Task/<int:id>', methods=['GET', 'POST'])
-def delete_task(id):
-    if id:
+@data.route('/Delete_Task/<int:task_id>', methods=['GET', 'POST'])
+def delete_task(task_id):
+    id = session.get('user_id')
+    if id is None:
+        return redirect('/Login')
+    if task_id:
         try:
-            Task.query.filter(Task.id == id).delete()
+            Task.query.filter(Task.id == task_id).delete()
             db.session.commit()
         except Exception as error:
-            print(f"delete_task [{id}] Fail {error}")
+            print(f"delete_task [{task_id}] Fail {error}")
     return redirect('/Home')
 
 
@@ -64,28 +69,52 @@ def Login():
         if not user.check_password(loginform.Password.data):
             #print(f"login user 2")
             flash('Invalid username or password', 'danger')
-            return redirect(url_for('data.login'))
+            return redirect(url_for('data.Login'))
         if user:
             #print(f"login user 3")
             flash("You are now signed in!", "success")
+            session['user_id'] = user.id
         return redirect('/Home')
     return render_template('Login and Accounts/login.html', title='Login', loginform=loginform)
 
 
 @data.route('/Logout', methods=['GET','POST'])
 def Logout():
-    logout_user()
+    session.pop('user_id', None)
     flash("You've signed out!", "success")
     return redirect('/Login')
 
-@data.route('/Update_Password', methods=['GET', 'POST'])
-def Update_Password():
-
-    return redirect('/Account_Settings')
+@data.route("/Change_Password", methods=["GET", "POST"])
+def Change_Password():
+    id = session.get('user_id')
+    if id is None:
+        return redirect('/Login')
+    err_str = ""
+    try:
+        user = User.query.filter(User.id == id).one()
+        passwordform = UserChangePassword()
+        if user.check_password(passwordform.CurrentPassword.data):
+            if passwordform.NewPassword.data == passwordform.NewPasswordRetype.data:
+                user.password = generate_password_hash(passwordform.NewPassword.data)
+                db.session.commit()
+                return redirect('/Home')
+            else:
+                err_str = "New Password doesn't match"
+                print(f"Check new password [{passwordform.NewPassword.data}] [{passwordform.NewPasswordRetype.data}]")
+        else:
+            print(f"Change Password db=[{user.password}] formpassword=[{passwordform.CurrentPassword.data}]")
+            err_str = "Incorrect Password"
+    except Exception as error:
+        err_str = f"Account Settings unexpected error [{id}] Fail {error}"
+    print(err_str)
+    return render_template("Errors/error_page.html", title= err_str)
 
 #Note Functions
 @data.route('/Add_Note', methods=['POST'])
 def Add_Note():
+    id = session.get('user_id')
+    if id is None:
+        return redirect('/Login')
     title = request.form.get('title')
     content = request.form.get('content')
     #print(f"addnote {title} {content}")
@@ -98,45 +127,57 @@ def Add_Note():
     return redirect('/Home')
 
 
-@data.route('/Delete_Note/<int:id>', methods=['GET', 'POST'])
-def Delete_Note(id):
-    if id:
+@data.route('/Delete_Note/<int:note_id>', methods=['GET', 'POST'])
+def Delete_Note(note_id):
+    id = session.get('user_id')
+    if id is None:
+        return redirect('/Login')
+    if note_id:
         try:
-            Note.query.filter(Note.id == id).delete()
+            Note.query.filter(Note.id == note_id).delete()
             db.session.commit()
         except Exception as error:
-         print(f"delete_note [{id}] Fail {error}")
+         print(f"delete_note [{note_id}] Fail {error}")
     return redirect('/Home')
 
 
-@data.route('/View_Note/<int:id>', methods= ['GET', 'POST'])
-def View_Note(id):
+@data.route('/View_Note/<int:note_id>', methods= ['GET', 'POST'])
+def View_Note(note_id):
+    id = session.get('user_id')
+    if id is None:
+        return redirect('/Login')
     note = None
-    if id:
+    if note_id:
         try:
-            note = Note.query.filter(Note.id == id).one()
+            note = Note.query.filter(Note.id == note_id).one()
         except Exception as error:
-            print(f"view_note [{id}] Fail {error}")
+            print(f"view_note [{note_id}] Fail {error}")
         """ Suggestion to redirect to an error page """
     return render_template('/Notes/view_note.html', title='View Note', note=note)
 
 
-@data.route('/Edit_Note/<int:id>', methods= ['GET', 'POST'])
-def Edit_Note(id):
+@data.route('/Edit_Note/<int:note_id>', methods= ['GET', 'POST'])
+def Edit_Note(note_id):
+    id = session.get('user_id')
+    if id is None:
+        return redirect('/Login')
     note = None
-    if id:
+    if note_id:
         try:
-            note = Note.query.filter(Note.id == id).one()
+            note = Note.query.filter(Note.id == note_id).one()
         except Exception as error:
-            print(f"view_note [{id}] Fail {error}")
+            print(f"view_note [{note_id}] Fail {error}")
     #print(f"view_note [{id}] [{note}]")
     return render_template('/Notes/edit_note.html', title='Edit Note', note=note)
 
 
-@data.route('/Update_Note/<int:id>', methods=['GET','POST'])
-def Update_Note(id):
+@data.route('/Update_Note/<int:note_id>', methods=['GET','POST'])
+def Update_Note(note_id):
+    id = session.get('user_id')
+    if id is None:
+        return redirect('/Login')
     #print(f"update_note 1 id = [{id}]")
-    note = Note.query.filter(Note.id == id).one()
+    note = Note.query.filter(Note.id == note_id).one()
     #print(f"update_note 2 id = [{id}]")
     if note:
         #print(f"update_note 3 id = [{id}]")
@@ -151,4 +192,4 @@ def Update_Note(id):
             db.session.commit()
             return render_template('/Notes/view_note.html', title='View Note', note=note)
         except Exception as error:
-            print(f"update_note [{id}] Fail [{error}]")
+            print(f"update_note [{note_id}] Fail [{error}]")

@@ -8,13 +8,10 @@
 {% block content %}
 <div class="grid-container">
   <section class="menu">
-    <div class="buttongroup">
-      <a class="button" href="{{ url_for('web.Create_Note')}}">New Note <i
-          class="fa-solid fa-pen-to-square icon"></i></a>
-      <a class="button" href="{{ url_for('web.Account_Settings')}}"> Account Settings <i
-          class="fa-solid fa-user-gear icon"></i></a>
-      <a class="button" href="{{ url_for('data.Logout')}}"> Logout <i
-          class="fa-solid fa-right-from-bracket icon"></i></a>
+    <div class="button-menu">
+      <a class="button" href="{{ url_for('web.Create_Note')}}">New Note</a>
+      <a class="button" href="/Account_Settings"> Account Settings</a>
+      <a class="button" href="{{ url_for('data.Logout')}}"> Logout</a>
     </div>
   </section>
 

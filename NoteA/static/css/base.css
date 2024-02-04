@@ -61,7 +61,7 @@ body{
   transform: translateY(0);
 }
 
-.buttongroup{
+.button-menu{
   display: inline-block;
   color: black;
   text-align: center;
@@ -71,6 +71,7 @@ body{
   font-size: 17px;
   border-radius: 5px;
 }
+
 
 
 i.icon{
