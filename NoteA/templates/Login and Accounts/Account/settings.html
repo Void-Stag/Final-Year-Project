@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% import 'Login and Accounts/wtf.html' as wtfx %}
+
 {% block styles %}
 <link href="static/css/accountpage.css" rel="stylesheet">
 <link href="static/media/loginmedia.css" rel="stylesheet">
@@ -16,14 +18,21 @@
         <hr>
         <div class="password-form">
             <h4>Change Password:</h4>
-            <form action="/Update_Password" method="POST">
+            <form action="/Change_Password" method="POST">
+                {{ passwordform.hidden_tag() }}
+                {{ wtfx.form_field(passwordform.CurrentPassword, id='font', placeholder=" Old Password") }}
+                {{ wtfx.form_field(passwordform.NewPassword, id='font', placeholder=" New Password") }}
+                {{ wtfx.form_field(passwordform.NewPasswordRetype, id='font', placeholder="Retype Password") }}
+                {{ wtfx.form_field(passwordform.PasswordUpdate) }}
+            </form>
+            <!-- <form action="/Update_Password" method="POST">
                 <input type="text" placeholder="Current Password" required="required"
                     aria-label="Current Password input box">
                 <input type="text" placeholder="New Password" required="required" aria-label="New Password input box">
                 <input type="text" placeholder="Retype New Password" required="required"
                     aria-label="Retype New Password input box">
                 <button class="button" type="submit">Change Password</button>
-            </form>
+            </form> -->
         </div>
         <hr>
         <h4> Delete Data</h4>
