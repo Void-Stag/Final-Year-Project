@@ -50,13 +50,13 @@ a {
 /* Orderd List */
 ol {
   display: flex;
-  padding: 20px;
+  padding: 1em;
   margin: 0;
 }
 
 ol.notes {
   display: inline-block;
-  width: 500px;
+  width: 30em;
   text-align: left;
 }
 .buttons {
