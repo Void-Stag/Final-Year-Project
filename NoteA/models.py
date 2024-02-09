@@ -45,6 +45,10 @@ class Note(db.Model, TimestampMixin):
     title = db.Column(db.String(200))
     content = db.Column(db.String(10000))
 
+    @ property
+    def contentsnip(self):
+        return self.content[:10]
+
     def __init__(self, title, content):
         self.title = title
         self.content = content

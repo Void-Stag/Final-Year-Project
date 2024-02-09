@@ -27,14 +27,12 @@
                 {{ wtfx.form_field(loginform.Login, class='button') }}
             </form>
 
-            {% if loginform.Username == false %}
+
                 <hr>
                 <form action="{{ url_for('data.CreateAccountRoot')}}">
                     <button type=submit aria-label="Create Account button" class="button">Create Account</button>
                 </form>
-            {% else %}
-                <!-- Displays no button -->
-            {% endif %}
+
         </section>
     </section>
 </div>
