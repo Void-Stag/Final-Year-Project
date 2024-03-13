@@ -20,3 +20,9 @@ class CreateAccount(FlaskForm):
         user = User.query.filter_by(username=Username.data).first()
         if user is not None:
             raise ValidationError('Please use a different username.')
+
+class UserChangePassword(FlaskForm):
+    CurrentPassword = PasswordField('', validators=[DataRequired(), Length(min=8, max=20)])
+    NewPassword = PasswordField('', validators=[DataRequired(), Length(min=8, max=20)])
+    NewPasswordRetype = PasswordField('', validators=[DataRequired(), EqualTo('NewPassword', 'Passwords must match')])
+    PasswordUpdate = SubmitField('Update Password')

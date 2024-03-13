@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% import 'Login and Accounts/wtf.html' as wtfx %}
+
+{% block styles %}
+    <link href="static/css/loginpage.css" rel="stylesheet">
+    <link href="static/css/media/loginmedia.css" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+<div class="grid-container">
+    <section class="loginspace">
+        <img src="{{url_for('static', filename='images/Note Armadillo.png')}}" alt=" Armadillo Logo">
+        <p>
+            All your notes securely in one place.<br>
+            You hold all your data. No online<br>
+            servers required.
+        </p>
+        <section>
+            <form action="/Login" method="POST" aria-label="Login Form">
+                {{ loginform.hidden_tag() }}
+                <label type="hidden_tag" aria-label="Username input below"></label>
+                {{ wtfx.form_field(loginform.Username, id='font', placeholder="Username") }}
+                <label type="hidden_tag" aria-label="Password input below"></label>
+                {{ wtfx.form_field(loginform.Password, id='font', placeholder="Password") }}
+                <label type="hidden_tag" aria-label="Submit button below"></label>
+                {{ wtfx.form_field(loginform.Login, class='button') }}
+            </form>
+
+
+                <hr>
+                <form action="{{ url_for('data.CreateAccountRoot')}}">
+                    <button type=submit aria-label="Create Account button" class="button">Create Account</button>
+                </form>
+
+        </section>
+    </section>
+</div>
+{% endblock %}

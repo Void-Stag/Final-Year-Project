@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% import 'Login and Accounts/wtf.html' as wtfx %}
+
+{% block styles %}
+    <link href="static/css/loginpage.css" rel="stylesheet">
+    <link href="static/css/media/loginmedia.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="grid-container">
+
+    <section class="loginspace">
+        <img src="{{url_for('static', filename='images/Note Armadillo.png')}}" alt="Logo">
+        <section>
+            <form action="" method="POST">
+                <p>Please input a username and password <br>into the required fields.
+                <p class="list">Password must be between 8 & 20 characters</p>
+                </p>
+                {{ accform.hidden_tag() }}
+                {{ wtfx.form_field(accform.Username, id='font', placeholder="Username") }}
+                {{ wtfx.form_field(accform.Password, id='font', placeholder="Password") }}
+                {{ wtfx.form_field(accform.PasswordRetype, id='font', placeholder="Retype Password") }}
+                {{ wtfx.form_field(accform.CreateAccount) }}
+            </form>
+        </section>
+    </section>
+
+</div>
+{% endblock %}
