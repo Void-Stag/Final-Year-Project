@@ -45,6 +45,7 @@ class Note(db.Model, TimestampMixin):
     title = db.Column(db.String(200))
     content = db.Column(db.String(10000))
 
+    """ contentsnip takes the note content data from the database and shortens it for main page display """
     @ property
     def contentsnip(self):
         return self.content[:10]
