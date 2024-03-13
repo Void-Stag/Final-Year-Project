@@ -18,10 +18,9 @@ def addtask():
     taskname = request.form.get('taskname')
     duedate = datetime.fromisoformat(request.form.get('duedate'))
     if taskname!= '' and duedate !='' !=None:
-        t = Task(taskname=taskname, duedate=duedate)
+        t = Task(taskname=taskname, duedate=duedate, user_id=id)
         db.session.add(t)
         db.session.commit()
-
     return redirect('/Home')
 
 @data.route('/Delete_Task/<int:task_id>', methods=['GET', 'POST'])
@@ -119,7 +118,7 @@ def Add_Note():
     content = request.form.get('content')
     #print(f"addnote {title} {content}")
     if title!= '' and content !='' !=None:
-        n = Note(title=title, content=content)
+        n = Note(title=title, content=content, user_id=id)
         db.session.add(n)
         db.session.commit()
         flash('Note Created!', 'success')
