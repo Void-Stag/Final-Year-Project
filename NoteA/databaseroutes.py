@@ -68,7 +68,7 @@ def Login():
         if not user.check_password(loginform.Password.data):
             #print(f"login user 2")
             flash('Invalid username or password', 'danger')
-            return redirect(url_for('data.Login'))
+            return redirect('/Login')
         if user:
             #print(f"login user 3")
             flash("You are now signed in!", "success")
@@ -107,6 +107,23 @@ def Change_Password():
         err_str = f"Account Settings unexpected error [{id}] Fail {error}"
     print(err_str)
     return render_template("Errors/error_page.html", title= err_str)
+
+#Delete User account & linked items
+@data.route('/Delete_User', methods=['GET','POST'])
+def Delete_User():
+    id = session.get('user_id')
+    if id is None:
+        return redirect('/Login')
+    try:
+        if id:
+            Task.query.filter(Task.user_id == id).delete()
+            Note.query.filter(Note.user_id == id).delete()
+            User.query.filter(User.id == id).delete()
+            db.session.commit()
+    except Exception as error:
+        err_str = f"Unable to delete user data [{id}] Fail {error}"
+        print(err_str)
+    return redirect('/Login')
 
 #Note Functions
 @data.route('/Add_Note', methods=['POST'])
