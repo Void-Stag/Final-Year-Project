@@ -25,14 +25,6 @@
                 {{ wtfx.form_field(passwordform.NewPasswordRetype, id='font', placeholder="Retype Password") }}
                 {{ wtfx.form_field(passwordform.PasswordUpdate) }}
             </form>
-            <!-- <form action="/Update_Password" method="POST">
-                <input type="text" placeholder="Current Password" required="required"
-                    aria-label="Current Password input box">
-                <input type="text" placeholder="New Password" required="required" aria-label="New Password input box">
-                <input type="text" placeholder="Retype New Password" required="required"
-                    aria-label="Retype New Password input box">
-                <button class="button" type="submit">Change Password</button>
-            </form> -->
         </div>
         <hr>
         <h4> Delete Data</h4>
@@ -43,7 +35,7 @@
         <p>
             All Notes and To-Do Tasks will be deleted and non-recovereable.
         </p>
-        <form action="" method="">
+        <form action="/Delete_User" method="POST">
             <button class="button" type="submit">Delete Data</button>
         </form>
 
