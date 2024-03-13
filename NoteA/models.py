@@ -17,7 +17,7 @@ class Task(db.Model):
     duedate = db.Column(db.DateTime)
     """ User_id Foreign Key """
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    user = db.relationship("User",backref=backref("user", uselist=False) )
+    user_task = db.relationship("User",backref=backref("user_task", uselist=False) )
 
     def __init__(self, taskname, duedate, user_id):
         self.taskname = taskname
@@ -53,17 +53,18 @@ class Note(db.Model, TimestampMixin):
     title = db.Column(db.String(200))
     content = db.Column(db.String(10000))
     """ User_id Foreign Key """
-    """ user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    user = db.relationship("User",backref=backref("user", uselist=False) ) """
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_note = db.relationship("User",backref=backref("user_note", uselist=False) )
 
     """ contentsnip takes the note content data from the database and shortens it for main page display """
     @ property
     def contentsnip(self):
         return self.content[:10]
 
-    def __init__(self, title, content):
+    def __init__(self, title, content, user_id):
         self.title = title
         self.content = content
+        self.user_id = user_id
 
     def __repr__(self):
         return f"<Task {self.title}>"
