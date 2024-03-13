@@ -18,10 +18,9 @@ def addtask():
     taskname = request.form.get('taskname')
     duedate = datetime.fromisoformat(request.form.get('duedate'))
     if taskname!= '' and duedate !='' !=None:
-        t = Task(taskname=taskname, duedate=duedate)
+        t = Task(taskname=taskname, duedate=duedate, user_id=id)
         db.session.add(t)
         db.session.commit()
-
     return redirect('/Home')
 
 @data.route('/Delete_Task/<int:task_id>', methods=['GET', 'POST'])
