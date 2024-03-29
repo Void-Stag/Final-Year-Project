@@ -85,3 +85,12 @@ hr {
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   width: 75%;
 }
+
+.alert{
+  width: max-content;
+  height: fit-content;
+  text-align: center;
+  padding-left: 50%;
+  padding-right: 50%;
+  display: flex;
+}

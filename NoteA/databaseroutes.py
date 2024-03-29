@@ -37,7 +37,7 @@ def delete_task(task_id):
     return redirect('/Home')
 
 
-#User Account & Login
+""" User Account & Login """
 @data.route('/Create_Account', methods=['GET', 'POST'])
 def CreateAccountRoot():
     accform = CreateAccount()
@@ -56,7 +56,7 @@ def CreateAccountRoot():
     return render_template('Login and Accounts/create_account.html', title='Create Account', accform=accform)
 
 
-#Login and User Account Authentication
+""" Login and User Account Authentication """
 @data.route('/')
 @data.route('/Login', methods=['GET', 'POST'])
 def Login():
@@ -65,14 +65,21 @@ def Login():
         #print(f"login user 1")
         user = User.query.filter_by(username=loginform.Username.data.strip()).first()
         #print(f"login user [{user.username}] [{user.password}] [{user}]")
+        if user is None:
+            """ If no user found in database """
+
+            flash('No Account Found', 'danger')
+            return redirect('/Login')
+
         if not user.check_password(loginform.Password.data):
             #print(f"login user 2")
             flash('Invalid username or password', 'danger')
             return redirect('/Login')
-        if user:
             #print(f"login user 3")
-            flash("You are now signed in!", "success")
-            session['user_id'] = user.id
+
+        """ If user found and successfully validated """
+        flash("You are now signed in!", "success")
+        session['user_id'] = user.id
         return redirect('/Home')
     return render_template('Login and Accounts/login.html', title='Login', loginform=loginform)
 
@@ -108,7 +115,7 @@ def Change_Password():
     print(err_str)
     return render_template("Errors/error_page.html", title= err_str)
 
-#Delete User account & linked items
+""" Delete User account & linked items """
 @data.route('/Delete_User', methods=['GET','POST'])
 def Delete_User():
     id = session.get('user_id')
@@ -125,7 +132,7 @@ def Delete_User():
         print(err_str)
     return redirect('/Login')
 
-#Note Functions
+""" Note Functions """
 @data.route('/Add_Note', methods=['POST'])
 def Add_Note():
     id = session.get('user_id')

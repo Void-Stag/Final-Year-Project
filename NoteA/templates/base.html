@@ -1,23 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        {% block styles %}{% endblock %}
-        <title>Note Armadillo</title>
-        <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico')}}">
-        <script src="https://kit.fontawesome.com/c3f98b7b36.js" crossorigin="anonymous"></script>
-        <link href="static/css/base.css" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+<head>
+    {% block styles %}{% endblock %}
+    <title>Note Armadillo</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico')}}">
+    <script src="https://kit.fontawesome.com/c3f98b7b36.js" crossorigin="anonymous"></script>
+    <link href="static/css/base.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 
 
-    <body>
-        {% block content %}{% endblock %}
+<body>
+    <!-- For message flashes in response to system processes, validation and input -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert" id="alert">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 
-    </body>
-    {% block scripts %}
+    {% block content %}
+
     {% endblock %}
+
+</body>
+
+{% block scripts %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+
+    setTimeout(function() {
+        $('#alert').remove();
+        console.log("timeout")
+    }, 9000);
+</script>
+{% endblock %}
+
 </html>
-
-
-
