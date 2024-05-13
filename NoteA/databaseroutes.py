@@ -42,7 +42,6 @@ def delete_task(task_id):
 def CreateAccountRoot():
     accform = CreateAccount()
     if accform.validate_on_submit():
-
         password_hash = generate_password_hash(accform.Password.data) #Password hash function is called to generate the inputted password
 
         user = User(
