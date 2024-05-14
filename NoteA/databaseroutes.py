@@ -179,7 +179,7 @@ def View_Note(note_id):
             note = Note.query.filter(Note.id == note_id).one()
         except Exception as error:
             print(f"view_note [{note_id}] Fail {error}")
-        return render_template("Errors/error_page.html", title='Error')
+            return render_template("Errors/error_page.html", title='Error')
     return render_template('/Notes/view_note.html', title='View Note', note=note)
 
 
