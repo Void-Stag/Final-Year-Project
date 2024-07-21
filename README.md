@@ -2,9 +2,9 @@
 
  A Note Taking Website App
 
-To launch project in VSCode:
+To launch project:
 
-Activate the Virtual Enviroment: .venv\scripts\activate
+Create a Virtual enviroment and import the requiered libraries from requirements.txt
 
 Then navigate to the app folder: cd NoteA
 
